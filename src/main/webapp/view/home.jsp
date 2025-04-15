@@ -27,7 +27,7 @@
 <%--This is where the main body which is the categories exists --%>
 <main>
 <h1>CATEGORIES</h1>
-<div class="category_box">cmc
+<div class="category_box">
 <div>Category 1</div>
 <div>Category 1</div>
 <div>Category 1</div>
