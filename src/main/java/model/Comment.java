@@ -26,7 +26,7 @@ public class Comment
 		this.userId = userId;
 		this.atricleId = atricleId;
 	}
-	//getters nd setters nethods
+	//getters and setters methods
 	public int getCommentId() {
 		return commentId;
 	}
