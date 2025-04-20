@@ -31,7 +31,7 @@
             <h1>Contact</h1>
 
             <h3>We'd love to hear from you whether you have questions, feedback, or  need support.<br>As a logged-in user, simply fill out the form below, and out team will getback to you soon. You through help us make ArtucleAphere better!</h3>
-            <h3>Email us at <a href="">contact@gmail.com</a></h3>
+            <h3>Email us at <a href="">articlesphere@gmail.com</a></h3>
            
         </div>
         <div id="icons">
