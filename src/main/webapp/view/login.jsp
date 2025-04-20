@@ -25,11 +25,12 @@
 <% if(request.getParameter("error") != null) { %>
 <p style="color: red;"><%= request.getAttribute("error") %></p>
 <%} %>
+<%= request.getAttribute("error") %>
 
 
 <%--This is the section where the form lies i.e. the fields and the create button --%>
 <main>
-<form action="login" onsubmit="post">
+<form action="${pageContext.request.contextPath}/login" method='POST'>
 <input type="email" id="email" name="email" placeholder="Email" required>
 <input type="password" id="password" name="password" placeholder="Password" required>
 <button type="submit" class="signin_button">SIGN IN</button>
