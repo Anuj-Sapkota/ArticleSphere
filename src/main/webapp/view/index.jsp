@@ -35,11 +35,13 @@
     </div>
     <i class="fa-solid fa-bars menu_icon"></i>
     <ul class="nav_links">
-        <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/index.jsp">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/view/about.jsp">About</a></li>
         <li><a href="${pageContext.request.contextPath}/view/contact.jsp">Contact Us</a></li>
     </ul>
-    <a href="${pageContext.request.contextPath}/view/profile.jsp"><i class="fa-regular fa-user nav_icon"></i></a>
+    <div class='profile_logout'> <a href="${pageContext.request.contextPath}/view/profile.jsp"><i class="fa-regular fa-user nav_icon"></i></a>
+    <a href="${pageContext.request.contextPath}/view/logout.jsp"><i class="fa fa-sign-out nav_icon" aria-hidden="true"></i></a></div>
+   
 </nav>
 <%-- This is where the header lies --%>
 <header>
