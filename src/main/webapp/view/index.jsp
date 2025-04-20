@@ -1,21 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" 
-         import="jakarta.servlet.http.HttpSession" %>
+         import="jakarta.servlet.http.HttpSession"
+         import="dao.UserDAO"
+         import="model.User"
+         import="java.sql.SQLException"
+         import="javax.crypto.Mac"
+         import="javax.crypto.spec.SecretKeySpec"
+         import="java.util.Base64" %>
 
 <%
-    // Try to get the existing session; if none exists, do NOT create one
     session = request.getSession(false);
-
-    // We stored the User object under "user" in LoginServlet
     Object userObj = (session != null) ? session.getAttribute("user") : null;
-    if (userObj == null) {
-        // No logged‑in user found: send them back to login page
-        response.sendRedirect(request.getContextPath() + "/view/login.jsp");
-        return;  // stop processing the rest of index.jsp
-    }
 
-    // (Optionally) cast to your User type to grab details, e.g. username/email
-    // model.User user = (model.User) userObj;
+    if (userObj == null) {
+        String userToken = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("userToken")) {
+                    userToken = cookie.getValue();
+                    break;
+                }
+            }
+        }
+
+        if (userToken != null) {
+            try {
+                // Split userToken into userId and signature
+                String[] parts = userToken.split(":");
+                if (parts.length != 2) {
+                    throw new Exception("Invalid userToken format");
+                }
+                String userId = parts[0];
+                String signature = parts[1];
+
+                // Verify the signature
+                String expectedSignature = null;
+                String SECRET_KEY = "!)@(#*$&%^";
+                Mac mac = Mac.getInstance("HmacSHA256");
+                SecretKeySpec secretKeySpec = new SecretKeySpec(SECRET_KEY.getBytes(), "HmacSHA256");
+                mac.init(secretKeySpec);
+                byte[] hmacBytes = mac.doFinal(userId.getBytes());
+                expectedSignature = Base64.getEncoder().encodeToString(hmacBytes);
+
+                if (!signature.equals(expectedSignature)) {
+                    throw new Exception("Invalid userToken signature");
+                }
+
+                // Fetch user from database using userId
+                UserDAO userDAO = new UserDAO();
+                User user = userDAO.getUserById(Integer.parseInt(userId));
+                if (user != null) {
+                    session = request.getSession(true);
+                    session.setMaxInactiveInterval(60 * 30);
+                    session.setAttribute("user", user);
+                    session.setAttribute("userId", user.getUserId());
+                    userObj = user;
+                }
+            } catch (Exception e) {
+                response.sendRedirect(request.getContextPath() + "/view/login.jsp?error=" + e.getMessage());
+                return;
+            }
+        }
+
+        if (userObj == null) {
+            response.sendRedirect(request.getContextPath() + "/view/login.jsp");
+            return;
+        }
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -39,9 +91,10 @@
         <li><a href="${pageContext.request.contextPath}/view/about.jsp">About</a></li>
         <li><a href="${pageContext.request.contextPath}/view/contact.jsp">Contact Us</a></li>
     </ul>
-    <div class='profile_logout'> <a href="${pageContext.request.contextPath}/view/profile.jsp"><i class="fa-regular fa-user nav_icon"></i></a>
-    <a href="${pageContext.request.contextPath}/view/logout.jsp"><i class="fa fa-sign-out nav_icon" aria-hidden="true"></i></a></div>
-   
+    <div class='profile_logout'>
+        <a href="${pageContext.request.contextPath}/view/profile.jsp"><i class="fa-regular fa-user nav_icon"></i></a>
+        <a href="${pageContext.request.contextPath}/view/logout.jsp"><i class="fa fa-sign-out nav_icon" aria-hidden="true"></i></a>
+    </div>
 </nav>
 <%-- This is where the header lies --%>
 <header>
@@ -76,9 +129,9 @@
 <div class='links'>
 <h3><strong>Links</strong></h3>
 <ul>
-<li><a href="#">Home</a></li>
-<li><a href="${pageContext.request.contextPath}view/about.jsp">About</a></li>
-<li>C<a href="${pageContext.request.contextPath}view/contact.jsp">Contact</a></li>
+<li><a href="${pageContext.request.contextPath}/view/index.jsp">Home</a></li>
+<li><a href="${pageContext.request.contextPath}/view/about.jsp">About</a></li>
+<li><a href="${pageContext.request.contextPath}/view/contact.jsp">Contact</a></li>
 </ul>
 </div>
 <div class='follow_us'>
