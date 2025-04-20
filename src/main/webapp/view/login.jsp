@@ -25,14 +25,18 @@
 <% if(request.getParameter("error") != null) { %>
 <p style="color: red;"><%= request.getAttribute("error") %></p>
 <%} %>
-<%= request.getAttribute("error") %>
-
+<%-- Remove this line as it causes duplicate error display --%>
+<%-- <%= request.getAttribute("error") %> --%>
 
 <%--This is the section where the form lies i.e. the fields and the create button --%>
 <main>
 <form action="${pageContext.request.contextPath}/login" method='POST'>
 <input type="email" id="email" name="email" placeholder="Email" required>
 <input type="password" id="password" name="password" placeholder="Password" required>
+<div class='remember_me'>
+    <input type="checkbox" id="rememberMe" name="rememberMe">
+    <label for="rememberMe">Remember me</label>
+</div>
 <button type="submit" class="signin_button">SIGN IN</button>
 </form>
 </main>
