@@ -1,5 +1,10 @@
 /build/
 .project
 .classpath
+<<<<<<< HEAD
+.settings/
+=======
 .settings/
 SQL Scripts/
+>>>>>>> a8325c96f78f651f5bb0a5b901f84b7d7a3908ad
+/bin/
