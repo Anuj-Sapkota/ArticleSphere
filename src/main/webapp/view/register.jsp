@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<i class="fa-solid fa-xmark cross_mark" onclick="window.location.href='${pageContext.request.contextPath}/login.jsp'"></i>
+<!-- <i class="fa-solid fa-xmark cross_mark" onclick="window.location.href='${pageContext.request.contextPath}/login.jsp'"></i>-->
 
 <div class="form_container">
 <%--This is the header section for the title and the logo --%>

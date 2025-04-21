@@ -1,69 +1,85 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Admin - ArticleSphere</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+    <title>Admin Dashboard - ArticleSphere</title>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    
 </head>
 <body>
- <div id="navbar">
-        <div id="nav1">
-            <i class="fa-solid fa-bars"></i>
-        <img src="../image.png" alt="images">  
-        </div>
-        <div id="nav2">
-        <i class="fa-regular fa-user"></i>
-        </div>
+<div class="header">
+        <h1>Admin Dashboard</h1>
+        <a href="#" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
     </div>
 
-    <div>
-        <h1>Admin</h1>
-
-    </div>
-
-    <div id="userlist">
-        <h3>User List</h3>
-        <li>
-            random@gmai.com <br>
-        </li>
-        <li>
-            random@gmai.com <br>
-        </li> 
-        <li>
-            random@gmai.com <br>
-        </li>
-         <li>
-            random@gmai.com <br>
-        </li>
-         <li>
-            random@gmai.com <br>
-        </li>
-    </div>
-
-    <h3 id="section-Header">Articles</h3>
-    <div id="Articles" >
-        
-        <div id="Title">
-            <h3>Title</h3>
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <p>150</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Articles</h3>
+                <p>320</p>
+            </div>
         </div>
-        <div id="Author">
-            <h3>Author</h3>
-        </div>
-        <div id="Action">
-            <h3>Action</h3>
-            <button>update</button>
-            <button>delete</button>
-        </div>
-    </div>
 
-    <div id="Footer">
-        <h5>ArticleSphere © 2025</h5>
-        <a href="">Home |</a>
-        <a href="">About |</a>
-        <a href="">Contact </a>
-        <h5>Want to write or comment ? <a href="">Sign in now!</a></h5>
-    </div>   
+        <!-- Articles Table -->
+        <table class="articles-table">
+            <thead>
+                <tr>
+                    <th>Article Name</th>
+                    <th>Created By</th>
+                    <th>Created Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dummy Data -->
+                <tr>
+                    <td>The Future of AI</td>
+                    <td>John Doe</td>
+                    <td>2025-04-15</td>
+                    <td>
+                        <button class="btn btn-view">View</button>
+                        <button class="btn btn-delete">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Exploring the Cosmos</td>
+                    <td>Jane Smith</td>
+                    <td>2025-04-10</td>
+                    <td>
+                        <button class="btn btn-view">View</button>
+                        <button class="btn btn-delete">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Healthy Living Tips</td>
+                    <td>Mike Johnson</td>
+                    <td>2025-04-05</td>
+                    <td>
+                        <button class="btn btn-view">View</button>
+                        <button class="btn btn-delete">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tech Innovations 2025</td>
+                    <td>Emily Brown</td>
+                    <td>2025-03-30</td>
+                    <td>
+                        <button class="btn btn-view">View</button>
+                        <button class="btn btn-delete">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
