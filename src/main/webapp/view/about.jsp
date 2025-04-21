@@ -1,23 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>About Us</title>
-    <link rel="stylesheet" href="../css/about.css">
+<%--Font Awesome --%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/component/nav.css">
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/component/footer.css">
+ <script src="${pageContext.request.contextPath}/component/nav.js" defer></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/about.css">
+  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - ArticleSphere</title>
 </head>
 <body>
-
-<div class="header">
-    <div class="nav-left">
-        <span class="menu-icon">&#9776;</span>
-        <img src="logo.png" alt="Logo" class="logo-icon">
-    </div>
-    <div class="nav-right">
-        <span class="icon">&#128269;</span>
-        <span class="icon">&#128100;</span>
-    </div>
-</div>
+  <%@ include file="../component/nav.jsp" %>
 
 <div class="content">
     <h1>ABOUT US</h1>
@@ -55,11 +52,7 @@
     </ul>
 </div>
 
-<div class="footer">
-    <p>ArticleSphere © 2025</p>
-    <p><a href="#">Home</a> | <a href="#">About</a> | <a href="#">Contact</a></p>
-    <p><a href="#">Want to write or comment? Sign in now!</a></p>
-</div>
+ <%@ include file="../component/footer.jsp" %>
 
 </body>
 </html>
