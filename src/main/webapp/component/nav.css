@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+/* Mobile-First Styles */
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    background-color: black;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    left: 0; /* Ensure it aligns to the left edge */
+    z-index: 1000;
+}
+.logo_container {
+    display: none; /* Hidden on mobile */
+}
+
+.menu_icon {
+    font-size: 2.5rem;
+    display: block; /* Visible on mobile */
+    color: white;
+    cursor: pointer;
+}
+
+.nav_links {
+    display: none; /* Hidden on mobile by default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav_links.active {
+    display: flex; /* Shown when toggled on mobile */
+}
+
+.nav_links li {
+    margin: 0.5rem 0;
+}
+
+.nav_links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav_links li a:hover {
+    color: red;
+}
+
+.nav_links li a.active {
+    color: red;
+    font-weight: 700;
+}
+
+.nav_icon {
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav_icon:hover {
+    color: red;
+}
+
+.profile_logout {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Laptop Styles (min-width: 1024px) */
+@media (min-width: 1024px) {
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    background-color: black;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    left: 0; /* Ensure it aligns to the left edge */
+    z-index: 1000;
+}
+
+    .logo_container {
+        display: flex; /* Visible on laptops */
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo_container img {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+    }
+
+    .logo_container h4 {
+        font-size: 1.2rem;
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    .menu_icon {
+        display: none !important;
+    }
+    .nav_links {
+        display: flex; /* Visible on laptops */
+        list-style: none;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 4rem;
+        padding: 0;
+        margin: 0;
+        
+    }
+
+    .nav_links li {
+        margin-right: 20px;
+    }
+
+    .nav_links li a {
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+        font-weight: 700;
+        color:white;
+    }
+
+    .nav_links li a:hover {
+        color: red;
+    }
+
+    .nav_icon {
+        font-size: 1.8rem;
+        color:white;
+    }
+
+    .logo_container {
+        display: flex; /* Visible on laptops */
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo_container img {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+    }
+
+    .logo_container h4 {
+        font-size: 1.2rem;
+        white-space: nowrap;
+        margin: 0;
+        color: white;
+    }
+    .nav_links {
+        display: flex; /* Visible on laptops */
+        flex-direction: row;
+        position: static;
+        width: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        list-style: none;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 4rem;
+        margin: 0;
+    }
+
+    .nav_links li {
+        margin-right: 20px;
+        margin: 0;
+    }
+
+    .nav_links li a {
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .nav_icon {
+        font-size: 1.8rem;
+    }
+
+    .profile_logout {
+        gap: 1.5rem;
+    }
+}

@@ -1,0 +1,79 @@
+footer {
+    width: 100%;
+    min-height: 100px; /* Reduced from 150px */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start; /* Changed to flex-start to reduce vertical space */
+    background-color: black;
+    color: white;
+    padding: 0.5rem; /* Reduced from 1rem */
+}
+
+.footer_logo {
+    height: 2.5rem; /* Reduced from 7rem, matches navbar logo */
+    width: 2.5rem;
+    border-radius: 50%; /* Adjusted to 50% for circular shape */
+}
+
+.logo_text {
+    display: flex;
+    gap: 0.5rem; /* Reduced from 1rem */
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 150px; /* Reduced from 200px */
+    margin: 0.25rem; /* Reduced from 0.5rem */
+}
+
+.links, .follow_us {
+    flex: 1;
+    min-width: 150px; /* Reduced from 200px */
+    color: white;
+    text-align: center;
+    margin: 0.25rem; /* Reduced from 0.5rem */
+}
+
+.links h3, .follow_us h3 {
+    font-size: 1.2rem; /* Reduced from 1.9rem */
+    margin-bottom: 0.3rem; /* Reduced from 0.5rem */
+}
+
+.links ul, .follow_us ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem; /* Reduced from 1.5rem */
+}
+
+.links ul li, .follow_us ul li {
+    margin: 0.4rem 0; /* Reduced from 0.8rem */
+}
+
+.links ul li a, .follow_us ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.2s ease;
+}
+
+.links ul li a:hover, .follow_us ul li a:hover {
+    color: red;
+}
+
+.links ul li a.active {
+    color: red;
+    font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo_text, .links, .follow_us {
+        margin-bottom: 0.5rem; /* Adjusted for mobile */
+    }
+}
