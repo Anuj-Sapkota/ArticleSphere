@@ -1,10 +1,10 @@
-ArticleSphere
+# ArticleSphere
 
-Overview
+## Overview
 
 ArticleSphere is a platform where users can share their stories, ideas, and knowledge with the world. Whether you're here to read inspiring articles or publish your own, ArticleSphere is your space to connect and create. This project was developed as part of a group assignment by Group 2 from L2C7.
 
-Notes for Instructors
+## Notes for Instructors
 
 The commit history on the main branch reflects our collaborative work. You can use git log or GitHub’s commit history to see individual contributions.
 
