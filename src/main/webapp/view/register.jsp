@@ -27,7 +27,7 @@
 
 <%--This is the section where the form lies i.e. the fields and the create button --%>
 <main>
-<form action="register" method="post">
+<form action="${pageContext.request.contextPath}/register" method="post">
 <input type="text" id="firstName" name="firstName" placeholder="First name" required>
 <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
 <input type="email" id="email" name="email" placeholder="Email" required>
