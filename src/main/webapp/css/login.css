@@ -1,179 +1,120 @@
-@charset "UTF-8";
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body
+{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  
 }
-html {
-    height: 100%;
-}
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
-    min-height: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.cross_mark {
-    position: absolute;
-    padding-left: 10px;
-    padding-top: 10px;
-    font-size: 3rem;
-}
-.form_container {
-    width: 100%;
-    max-width: 600px;
-    margin-top: 2rem;
-    padding-inline: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.form_wrapper {
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 1rem;
-    padding: 2rem;
-    margin-top: 1rem;
-}
-main {
-    width: 100%;
-    max-width: 100%;
-}
-form {
-    display: flex;
-    gap: 1.5rem;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-form input[type="email"],
-form input[type="password"] {
-    padding: 5px 15px;
-    font-size: 1.5rem;
-    border: solid 2px black;
-    width: 100%;
-    height: 3.5rem;
-    border-radius: 0.5rem;
-}
-form input[type="checkbox"] {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-right: 0.5rem;
-}
-form button {
-    background: black;
-    color: white;
-    font-weight: bold;
-    font-size: 1.5rem;
-    width: 100%;
-    height: 3.5rem;
-    border-radius: 0.5rem;
-    margin-block: 1rem;
-}
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-header img {
-    height: 10rem;
-    width: 10rem;
-}
-header h1 {
-    font-size: 2.5rem;
-}
-footer {
-    width: 100%;
-    max-width: 600px;
-    padding-inline: 1rem;
-    margin-top: 2rem;
-}
-footer p {
-    text-align: center;
-    font-size: 1.2rem;
-}
-.remember_me {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 1.2rem;
-    color: black;
-}
-.remember_me label {
-    cursor: pointer;
-}
-footer p span {
-    color: rgb(91, 103, 237);
-    font-weight: 700;
-    cursor: pointer;
-}
-footer button {
-    border: 1px black solid;
-    background: rgb(241, 241, 241);
-    font-weight: bold;
-    font-size: 1.5rem;
-    width: 100%;
-    height: 3.5rem;
-    border-radius: 0.5rem;
-    margin-block: 1rem;
-}
+.form_container
+{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	width:35%;
+	padding-block:2rem;
 
-/* Media Query for Laptop Screens (min-width: 1024px) */
-@media (min-width: 1024px) {
-    .form_container {
-        margin-top: 3rem;
-    }
-    .form_wrapper {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        padding: 1.5rem;
-        margin-top: 0.5rem;
-    }
-    form {
-        gap: 1rem;
-    }
-    form input[type="email"],
-    form input[type="password"] {
-        font-size: 1.2rem;
-        height: 3rem;
-        padding: 5px 10px;
-    }
-    form input[type="checkbox"] {
-        width: 1.2rem;
-        height: 1.2rem;
-        margin-right: 0.4rem;
-    }
-    form button {
-        font-size: 1.2rem;
-        height: 3rem;
-        margin-block: 0.8rem;
-    }
-    header img {
-        height: 8rem;
-        width: 8rem;
-    }
-    header h1 {
-        font-size: 2rem;
-    }
-    footer {
-        padding-inline: 2rem;
-    }
-    footer p {
-        font-size: 1rem;
-    }
-    .remember_me {
-        font-size: 1rem;
-    }
-    footer button {
-        font-size: 1.2rem;
-        height: 3rem;
-        margin-block: 0.8rem;
-    }
-    .cross_mark {
-        font-size: 2.5rem;
-    }
+}
+.title_logo
+{
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+}
+.title_logo img
+{
+	width:7rem;
+	height:7rem;
+	margin-inline:auto;
+}
+.title_logo h1
+{
+	 font-weight: 700;
+}
+form
+{
+	display:flex;
+	flex-direction:column;
+	width:25rem;
+}
+#email
+{
+	margin-bottom:1.5rem;
+	
+}
+#email, #password
+{
+	border-radius:5px;
+	width:100%;
+	height:3rem;
+	padding-left:10px;
+	font-size:1rem;
+	
+}
+.rememerme_forgotPW
+{
+	display:flex;
+	width:100%;
+	justify-content:space-between;
+	align-items:center;
+}
+.rememberMe
+{
+	display:flex;
+	align-items:center;
+}
+form p
+{
+	cursor:pointer;
+	text-decoration:underline;
+	
+}
+form button
+{
+	padding:1rem 1rem;
+	color:white;
+	width:25.7rem;
+	font-weight:700;
+	background-color:black;
+	cursor:pointer;
+	border-radius:5px;
+	margin-top:1.5rem;
+}
+.other_login
+{
+	margin-top:3rem;
+	text-align:center;
+}	
+.other_login_icons
+{
+	display:flex;
+	gap:2rem;
+}
+.other_login img
+{
+	height:3rem;
+	width:3rem;
+	cursor:pointer;
+}
+.register_redirect
+{
+	display:flex;
+	margin-top:3rem;
+}
+.register_redirect button
+{
+	font-size:1rem;
+	font-family: "Raleway", sans-serif;
+	font-optical-sizing: auto;
+	padding:0;
+	border:none;
+	background-color:white;
+	color:blue;
+	text-decoration:underline;
+	cursor:pointer;
+	margin-left:2px;
+	
 }
