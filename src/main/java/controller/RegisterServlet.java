@@ -14,12 +14,6 @@ import java.time.LocalDateTime;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet
 {
-	
-//@Override
-//public void init() throws ServletException
-//{
-//	userDAO = new UserDAO();
-//}
 
 @Override
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -36,6 +30,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     {
     	int userId = UserDAO.registerUser(user);
     	user.setUserId(userId);
+    	response.sendRedirect("/ArticleSphere/");
     	
     }
     catch (SQLException e)

@@ -14,28 +14,36 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
 }
 
+/* Modal Container */
 .modal {
     background-color: white;
     width: 90%;
-    max-width: 400px;
-    border-radius: 8px;
+    max-width: 1000px;
+    margin: 5% auto;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    transition: all 0.3s ease;
 }
 
+/* Modal Header */
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
     border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .modal-header h2 {
     color: black;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -47,38 +55,55 @@ body {
     color: black;
 }
 
+/* Post Button */
 .post-btn {
     background-color: #ff0000;
     color: white;
     border: none;
-    padding: 5px 15px;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.2s ease;
 }
 
+.post-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Modal Body */
 .modal-body {
-    padding: 20px;
+    padding: 10px 0;
 }
 
+/* Form Elements */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
     font-size: 16px;
     color: #333;
+    transition: border-color 0.2s ease;
 }
 
+input:focus, select:focus, textarea:focus {
+    border-color: #888;
+    outline: none;
+}
+
+/* Textarea Styling */
 textarea {
     min-height: 200px;
     resize: vertical;
 }
 
+/* Image Upload */
 .image-upload {
     display: flex;
     justify-content: flex-start;
@@ -87,23 +112,20 @@ textarea {
 }
 
 .image-icon {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     border: 1px solid #ddd;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border-radius: 4px;
+    background-color: #f9f9f9;
 }
-
-.hidden {
-    display: none;
-}
-
 
 .image-icon::before {
     content: "📷";
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
 }
 
@@ -115,4 +137,82 @@ textarea {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* Hidden Input */
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+
+/* Tablets & Medium Screens */
+@media screen and (max-width: 1023px) {
+    .modal {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .modal-header h2 {
+        font-size: 20px;
+    }
+
+    .post-btn {
+        padding: 8px 16px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 600px) {
+    body {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+
+    .modal {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 15px;
+    }
+
+    .modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .modal-header h2 {
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .post-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    input, select, textarea {
+        font-size: 15px;
+        padding: 10px 12px;
+    }
+
+    .image-upload {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .file-name {
+        margin-left: 0;
+        margin-top: 8px;
+        max-width: 100%;
+    }
 }

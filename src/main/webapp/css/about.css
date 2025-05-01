@@ -1,0 +1,142 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+
+.header {
+    background-color: #e0e0e0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.logo-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.nav-right .icon {
+    font-size: 22px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* Main Content */
+.content {
+    background-color: #ffffff;
+    padding: 30px 20px;
+    margin: 20px auto;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.intro, .content p {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid #000;
+}
+
+h3 {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+/* Footer */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+/* ------------------ RESPONSIVE STYLES ------------------ */
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-left, .nav-right {
+        margin: 5px 0;
+    }
+
+    .content {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .intro, .content p {
+        font-size: 14px;
+    }
+
+    .nav-right .icon, .menu-icon {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 15px;
+    }
+
+    .footer a {
+        display: block;
+        margin: 5px 0;
+    }
+}

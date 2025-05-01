@@ -32,7 +32,7 @@ public class UserDAO
 	public static int registerUser(User user) throws SQLException 
 	{
 		int generatedId = -1;
-		String query = "INSERT INTO User (firstName, lastName, email, password, createdAt, bio, profilePicture) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO user (firstName, lastName, email, password, createdAt, bio, profilePicture) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		// password hashing for security
 		String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
@@ -69,7 +69,7 @@ public class UserDAO
 	
 	public User loginUser(String email, String password) throws SQLException
 	{
-		String query = "SELECT * FROM User WHERE email = ?";
+		String query = "SELECT * FROM user WHERE email = ?";
 		try(Connection connection = getConnection(URL, USER, PASSWORD);
 			PreparedStatement pst = connection.prepareStatement(query))
 		{
@@ -89,9 +89,9 @@ public class UserDAO
 							 rs.getString("email"),
 							 storedHashPw,
 							 rs.getString("role"),
-		                     rs.getObject("created_at", LocalDateTime.class),
+		                     rs.getObject("createdAt", LocalDateTime.class),
 		                     rs.getString("bio"),
-		                     rs.getString("profile_picture")
+		                     rs.getString("profilePicture")
 									);
 				}
 				}
@@ -99,4 +99,30 @@ public class UserDAO
 		}
 		return null;
 	}
+	
+
+    public User getUserById(int userId) throws SQLException {
+        String query = "SELECT * FROM user WHERE userId = ?";
+        try (Connection connection = getConnection(URL, USER, PASSWORD);
+             PreparedStatement pst = connection.prepareStatement(query)) {
+            pst.setInt(1, userId);
+            
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    return new User(
+                        rs.getInt("userId"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("role"),
+                        rs.getObject("createdAt", LocalDateTime.class),
+                        rs.getString("bio"),
+                        rs.getString("profilePicture")
+                    );
+                }
+            }
+        }
+        return null;
+    }
 }

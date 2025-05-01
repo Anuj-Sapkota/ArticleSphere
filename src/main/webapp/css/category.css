@@ -1,0 +1,147 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+#navbar {
+    background-color: #000;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#nav1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#nav2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#navbar i {
+    font-size: 18px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#navbar img {
+    height: 30px;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: center;
+    font-size: 14px;
+    margin: 10px 20px;
+    color: #666;
+}
+
+/* Buttons Container */
+#btns {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Category Buttons */
+#btns button {
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#btns button:hover {
+    background: #333;
+    color: white;
+    border-color: #333;
+}
+
+/* Footer */
+#Footer {
+    background-color: #111;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+#Footer a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 0.2rem;
+}
+
+#Footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 430px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 13px;
+        margin: 10px 15px;
+    }
+
+    #btns {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #btns button {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    #navbar i {
+        font-size: 16px;
+    }
+
+    #navbar img {
+        height: 26px;
+    }
+}
