@@ -1,2 +1,5 @@
 /build/
 SQL Scripts/
+.classpath
+.settings/
+.project
