@@ -9,6 +9,8 @@
          import="java.util.Base64" %>
 
 <%
+//Get the current page name to highlight the active link
+String currentPage = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/") + 1);
     session = request.getSession(false);
     Object userObj = (session != null) ? session.getAttribute("user") : null;
 
@@ -68,7 +70,9 @@
             return;
         }
     }
+ 
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,12 +91,56 @@
 </head>
 <body>
     <!-- Include the Navigation Bar -->
-    <%@ include file="../component/nav.jsp" %>
+   <nav>
+   <h1>Article Sphere</h1>
+   <ul class="pages">
+           <li><a href="${pageContext.request.contextPath}/view/index.jsp" class="<%= currentPage.equals("index.jsp") ? "active" : "" %>">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/about.jsp" class="<%= currentPage.equals("about.jsp") ? "active" : "" %>">About</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/contact.jsp" class="<%= currentPage.equals("contact.jsp") ? "active" : "" %>">Contact Us</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/category.jsp" class="<%= currentPage.equals("category.jsp") ? "active" : "" %>">Categories</a></li>
+    </ul>
+      <div class="nav-buttons">
+            <button class="write-btn" onclick="window.location.href='Articlepublishing.jsp'">
+                <i class="fa-regular fa-pen-to-square"></i>
+                Write
+            </button>
+            <button class="icon-btn">
+                <i class="fa-solid fa-bell"></i>
+            </button>
+            <div class="dropdown">
+                <button class="profile-btn" id="profileBtn">B</button>
+                <div class="dropdown-content" id="profileDropdown">
+                    <a href="#">
+                        <span class="menu-icon"><i class="fa-solid fa-user"></i></span>
+                        Profile
+                    </a>
+                    <a href="#">
+                        <span class="menu-icon"><i class="fa-solid fa-book"></i></span>
+                        Create
+                    </a>
+                    <a href="#">
+                        <span class="menu-icon"><i class="fa-solid fa-gear"></i></span>
+                        Settings
+                    </a>
+                    <div class="divider"></div>
+                    <a href="#">
+                        <span class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+                        Sign out
+                    </a>
+                </div>
+            </div>
+        </div>
+   </nav>
 
     <%-- This is where the header lies --%>
     <header>
-        <img src="${pageContext.request.contextPath}/assets/logo.jpg"/>
-        <h1>ARTICLE SPHERE</h1>
+    <div class="logo_box">
+  <div class="logo_title">
+    <img src="${pageContext.request.contextPath}/assets/logo.jpg"/>
+    <h1>ARTICLE SPHERE</h1>
+  </div>
+</div>
+
         <p class="hero_paragraph">Welcome to <strong>ArticleSphere</strong>, where anyone can share their stories and ideas with the world. Dive into a diverse collection of articles or <strong>sign</strong> in to publish your own today!</p>
         <div class="search_container">
             <input type="search" id="search" name="search" placeholder="Search"/>
@@ -102,7 +150,9 @@
 
     <%-- This is where the main body which is the categories exists --%>
     <main>
-        <h1>CATEGORIES</h1>
+    <div class='category_title'>
+    <div class='line'></div> <h1>CATEGORIES</h1><div class='line'></div></div>
+       
         <div class="category_box">
             <button>Category 1</button>
             <button>Category 2</button>
@@ -110,8 +160,6 @@
             <button>Category 4</button>
             <button>Category 5</button>
             <button>Category 6</button>
-            <button>Category 7</button>
-            <button>Category 8</button>
         </div>
     </main>
 

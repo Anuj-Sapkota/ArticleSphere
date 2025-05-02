@@ -5,19 +5,25 @@
 %>
 <nav>
 
-    <div class="logo_container">
-        <img src="${pageContext.request.contextPath}/assets/logo.jpg" alt="ArticleSphere Logo"/>
-        <h4>ARTICLE SPHERE</h4>
+    <div class="logo_search">
+        
+        <h4>Article Sphere</h4>
+        <div class=search_plus_icon>
+        <i class="fa-solid fa-magnifying-glass search_icon"></i>
+        <input type="search" placeholder='Search' id='search'/>
+        </div>
+        
     </div>
-    <i class="fa-solid fa-bars menu_icon"></i>
+    
     <ul class="nav_links">
         <li><a href="${pageContext.request.contextPath}/view/index.jsp" class="<%= currentPage.equals("index.jsp") ? "active" : "" %>">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/view/about.jsp" class="<%= currentPage.equals("about.jsp") ? "active" : "" %>">About</a></li>
         <li><a href="${pageContext.request.contextPath}/view/contact.jsp" class="<%= currentPage.equals("contact.jsp") ? "active" : "" %>">Contact Us</a></li>
         <li><a href="${pageContext.request.contextPath}/view/category.jsp" class="<%= currentPage.equals("category.jsp") ? "active" : "" %>">Categories</a></li>
     </ul>
-    <div class="profile_logout">
+    <div class="profile">
         <a href="${pageContext.request.contextPath}/view/profile.jsp"><i class="fa-regular fa-user nav_icon"></i></a>
         <a href="${pageContext.request.contextPath}/view/logout.jsp"><i class="fa fa-sign-out nav_icon" aria-hidden="true"></i></a>
+   
     </div>
 </nav>
