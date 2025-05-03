@@ -7,6 +7,12 @@
          import="javax.crypto.Mac"
          import="javax.crypto.spec.SecretKeySpec"
          import="java.util.Base64" %>
+         <%@ page import="
+  java.util.List,
+  model.Category
+" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <%
 //Get the current page name to highlight the active link
@@ -94,10 +100,10 @@ String currentPage = request.getRequestURI().substring(request.getRequestURI().l
    <nav>
    <h1>Article Sphere</h1>
    <ul class="pages">
-           <li><a href="${pageContext.request.contextPath}/view/index.jsp" class="<%= currentPage.equals("index.jsp") ? "active" : "" %>">Home</a></li>
+           <li><a href="${pageContext.request.contextPath}/home" class="<%= currentPage.equals("index.jsp") ? "active" : "" %>">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/view/about.jsp" class="<%= currentPage.equals("about.jsp") ? "active" : "" %>">About</a></li>
         <li><a href="${pageContext.request.contextPath}/view/contact.jsp" class="<%= currentPage.equals("contact.jsp") ? "active" : "" %>">Contact Us</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/category.jsp" class="<%= currentPage.equals("category.jsp") ? "active" : "" %>">Categories</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/articleList.jsp" class="<%= currentPage.equals("category.jsp") ? "active" : "" %>">Articles</a></li>
     </ul>
       <div class="nav-buttons">
             <button class="write-btn" onclick="window.location.href='Articlepublishing.jsp'">
@@ -110,7 +116,7 @@ String currentPage = request.getRequestURI().substring(request.getRequestURI().l
             <div class="dropdown">
                 <button class="profile-btn" id="profileBtn">B</button>
                 <div class="dropdown-content" id="profileDropdown">
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/view/Profile.jsp">
                         <span class="menu-icon"><i class="fa-solid fa-user"></i></span>
                         Profile
                     </a>
@@ -149,21 +155,44 @@ String currentPage = request.getRequestURI().substring(request.getRequestURI().l
     </header>
 
     <%-- This is where the main body which is the categories exists --%>
-    <main>
-    <div class='category_title'>
-    <div class='line'></div> <h1>CATEGORIES</h1><div class='line'></div></div>
-       
-        <div class="category_box">
-            <button>Category 1</button>
-            <button>Category 2</button>
-            <button>Category 3</button>
-            <button>Category 4</button>
-            <button>Category 5</button>
-            <button>Category 6</button>
-        </div>
-    </main>
+   <main>
+    <div class="container">
+      
+
+      <!-- Category grid -->
+      <div class="category_box">
+        <c:forEach var="cat" items="${categories}">
+          <div class="category_card">
+            <h3>${cat.categoryName}</h3>
+            <div class="card_overlay">
+              <p>${cat.categoryDescription}</p>
+            </div>
+          </div>
+        </c:forEach>
+      </div>
+    </div>
+  </main>
+
 
     <%-- This is the footer for the page --%>
     <%@ include file="../component/footer.jsp" %>
+    
+    <script>
+    document.getElementById('profileBtn').addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevents closing immediately
+        const dropdown = document.getElementById('profileDropdown');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 2. Close dropdown when clicking elsewhere
+    window.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('profileDropdown');
+        if (dropdown && dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
+        }
+    });
+
+    
+    </script>
 </body>
 </html>

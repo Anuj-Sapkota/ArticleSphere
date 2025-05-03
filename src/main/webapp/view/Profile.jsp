@@ -33,7 +33,7 @@
             <div class="dropdown">
                 <button class="profile-btn" id="profileBtn">B</button>
                 <div class="dropdown-content" id="profileDropdown">
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/view/Profile.jsp">
                         <span class="menu-icon"><i class="fa-solid fa-user"></i></span>
                         Profile
                     </a>

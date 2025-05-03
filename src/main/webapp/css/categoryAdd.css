@@ -1,5 +1,5 @@
 /*────────────────────────────────────────────────────────*/
-/* 1) Reset & Base Styles                               */
+/* 1) Reset & Base                                         */
 /*────────────────────────────────────────────────────────*/
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
@@ -11,24 +11,19 @@
 }
 
 body {
-  background-color: #fff;
+  background: #f9f9f9;
   color: #292929;
-  line-height: 1.6;
 }
 
-/* container to center content */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
 /*────────────────────────────────────────────────────────*/
 /* 2) Sidebar                                              */
 /*────────────────────────────────────────────────────────*/
 .sidebar {
   position: fixed;
-  top: 0; left: 0;
-  width: 200px; height: 100vh;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
   background: #fff;
   box-shadow: 2px 0 8px rgba(0,0,0,0.1);
   padding: 2rem 1rem;
@@ -54,116 +49,164 @@ body {
   transition: background 0.2s;
 }
 
-
 .sidebar nav a:hover {
   background: #eee;
 }
+
+.sidebar nav a.active {
+  background: #ddd;
+  font-weight: 600;
+}
+
 /*────────────────────────────────────────────────────────*/
-/* 3) Main Content Area                                  */
+/* 3) Main Content                                         */
 /*────────────────────────────────────────────────────────*/
 .main-content {
-  margin-left: 200px; /* push over by sidebar width */
-  padding: 3rem 0;
+  margin-left: 200px;
+  padding: 2rem;
 }
 
-.main-content h1 {
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header inside main */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  text-align: center;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.6rem 1.2rem;
+  background: #292929;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  text-decoration: none;
+}
+
+.logout-btn:hover {
+  background: #444;
+  transform: scale(1.05);
 }
 
 /*────────────────────────────────────────────────────────*/
-/* 4) Form Styling                                       */
+/* 4) Form and Messages                                    */
 /*────────────────────────────────────────────────────────*/
-form {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-form label {
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
-form input[type="text"],
-form input[type="file"] {
+.form-group input[type="text"] {
   width: 100%;
-  padding: 0.6rem 0.8rem;
-  margin-bottom: 1.2rem;
-  border: 1px solid #ddd;
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
   border-radius: 4px;
   font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-form input:focus {
-  border-color: #1a73e8;
-  box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+.message {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-weight: 500;
 }
 
-.publish-btn {
-  display: inline-block;
-  padding: 0.8rem 1.6rem;
-  background-color: #292929;
+.message.error {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.message.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.create-btn {
+  padding: 0.5rem 1rem;
+  background: #ff6200;
   color: #fff;
-  font-weight: 700;
   border: none;
   border-radius: 4px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background 0.2s;
 }
 
-.publish-btn:hover {
-  background-color: #444;
+.create-btn:hover {
+  background: #e55a00;
 }
 
-/* ───────────────────────────────────────────── */
-/* 5) Categories Table                          */
-/* ───────────────────────────────────────────── */
-h2 {
-  margin-top: 2rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #292929;
-  text-align: center;
-}
-
-.category-table {
+/*────────────────────────────────────────────────────────*/
+/* 5) Table                                                */
+/*────────────────────────────────────────────────────────*/
+.data-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-.category-table th,
-.category-table td {
+.data-table th,
+.data-table td {
   padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #e0e0e0;
   text-align: left;
   vertical-align: middle;
 }
 
-.category-table th {
-  background-color: #f7f7f7;
+.data-table th {
+  background: #f7f7f7;
   font-weight: 600;
+  color: #333;
 }
 
-.cat-thumb {
-  max-height: 50px;
+.data-table tr:hover {
+  background: #f0f0f0;
+}
+
+.delete-btn {
+  padding: 0.5rem 1rem;
+  background: #292929;
+  color: #fff;
+  border: none;
   border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.actions a {
-  color: #1a73e8;
-  text-decoration: none;
-  font-weight: 500;
+.delete-btn:hover {
+  background: #444;
 }
 
-.actions a:hover {
-  text-decoration: underline;
+.actions {
+  white-space: nowrap;
 }
