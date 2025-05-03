@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="dao.CategoryDAO, java.util.List, model.Category, model.Article" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +9,7 @@
     <title>Create New Article</title>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/ArticlePublish.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ArticlePublish.css">
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -19,7 +21,7 @@
         </div>
         <div class="nav-buttons">
             <button class="publish-btn" id="publishBtn">Publish</button>
-            <button class="icon-btn" onclick="window.location.href='Articlepublishing.jsp'">
+            <button class="icon-btn" onclick="window.location.href='${pageContext.request.contextPath}/publishArticle'">
                 <i class="fa-solid fa-ellipsis"></i>
             </button>
             <button class="icon-btn" onclick="navigateTo('notifications')">
@@ -28,7 +30,7 @@
             <div class="dropdown">
                 <button class="profile-btn" id="profileBtn">B</button>
                 <div class="dropdown-content" id="profileDropdown">
-                    <a href="#" onclick="window.location.href='index.jsp'">
+                    <a href="#" onclick="window.location.href='${pageContext.request.contextPath}/view/Profile.jsp'">
                         <span class="menu-icon"><i class="fa-solid fa-user"></i></span>Profile
                     </a>
                     <a href="#" onclick="navigateTo('stories')">
@@ -54,8 +56,12 @@
             <button class="toolbar-btn" data-command="link"><i class="fa-solid fa-link"></i></button>
             <button class="toolbar-btn" data-command="image"><i class="fa-solid fa-image"></i></button>
         </div>
-        <input type="text" class="article-title" id="articleTitle" name="title" placeholder="Title" value="">
-        <div class="article-content" id="articleContent" contenteditable="true" placeholder="Tell your story..."></div>
+        <input type="text" class="article-title" id="articleTitle" name="title" placeholder="Title" value="<c:out value='${article.title}' default='' />">
+        <div class="article-content" id="articleContent" contenteditable="true" placeholder="Tell your story...">
+            <c:if test="${not empty article.content}">
+                <c:out value="${article.content}" escapeXml="false" />
+            </c:if>
+        </div>
         <div id="sectionsContainer"></div>
         <button class="add-content-btn" id="addSectionBtn"><i class="fa-solid fa-plus"></i> Add section</button>
     </div>
@@ -64,7 +70,10 @@
     <div class="modal" id="publishModal">
         <div class="modal-content">
             <form action="${pageContext.request.contextPath}/article" method="post">
-                <input type="hidden" name="action" value="create">
+                <input type="hidden" name="action" value="<c:choose><c:when test='${not empty article}'>update</c:when><c:otherwise>create</c:otherwise></c:choose>">
+                <c:if test="${not empty article}">
+                    <input type="hidden" name="articleId" value="${article.articleId}">
+                </c:if>
                 <input type="hidden" name="title" id="formTitle">
                 <input type="hidden" name="content" id="formContent">
                 <%
@@ -82,18 +91,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">Category</label>
-                        <select class="category-select" name="categoryId" required>
+                        <select name="categoryId" class="category-select" required>
                             <option value="">Select a category</option>
-                            <option value="1">Technology</option>
-                            <option value="2">Science</option>
-                            <option value="3">Health</option>
-                            <option value="4">Business</option>
-                            <option value="5">Culture</option>
-                            <option value="6">Politics</option>
-                            <option value="7">Education</option>
-                            <option value="8">Arts</option>
-                            <option value="9">Sports</option>
-                            <option value="10">Travel</option>
+                            <c:forEach var="cat" items="${categories}">
+                                <option value="${cat.categoryId}" <c:if test="${article.categoryId == cat.categoryId}">selected</c:if>>${cat.categoryName}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -129,26 +131,43 @@
 
         // Show Publish Modal
         document.getElementById('publishBtn').addEventListener('click', function() {
-            const title = document.getElementById('articleTitle').value;
-            const content = document.getElementById('articleContent').innerHTML;
+            console.log('Publish button clicked'); // Debug log
+            try {
+                const title = document.getElementById('articleTitle').value;
+                let content = document.getElementById('articleContent').innerHTML;
 
-            if (!title || !content) {
-                showNotification('Title and content are required', 'error');
-                return;
+                // Minimal sanitization to remove editor-specific metadata
+                content = content
+                    .replace(/data-start="\d+" data-end="\d+" class=""/g, '') // Remove data attributes
+                    .replace(/style="[^"]*"/g, '') // Remove inline styles
+                    .replace(/<p>\s*<br>\s*<\/p>/g, '') // Remove empty paragraphs with <br>
+                    .replace(/ /g, ' '); // Replace non-breaking spaces with regular spaces
+
+                if (!title || !content.trim()) {
+                    showNotification('Title and content are required', 'error');
+                    return;
+                }
+
+                document.getElementById('formTitle').value = title;
+                document.getElementById('formContent').value = content;
+                console.log('Setting modal display to block'); // Debug log
+                const modal = document.getElementById('publishModal');
+                modal.style.display = 'block';
+            } catch (error) {
+                console.error('Error in publish button handler:', error);
+                showNotification('An error occurred while publishing', 'error');
             }
-
-            document.getElementById('formTitle').value = title;
-            document.getElementById('formContent').value = content;
-            document.getElementById('publishModal').style.display = 'block';
         });
 
         // Close Modal
         document.querySelector('.close-modal').addEventListener('click', function() {
+            console.log('Close modal clicked'); // Debug log
             document.getElementById('publishModal').style.display = 'none';
         });
 
         // Notification Function
         function showNotification(message, type) {
+            console.log('Showing notification:', message, type); // Debug log
             const notification = document.getElementById('notification');
             notification.textContent = message;
             notification.className = `notification show ${type}`;

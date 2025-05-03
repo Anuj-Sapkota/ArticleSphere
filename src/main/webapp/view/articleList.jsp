@@ -75,8 +75,8 @@
                     if (articles != null) {
                         for (Article article : articles) {
                 %>
-                <div class="individual_left_main">
-                    <div class="individual_left_main_content">
+                <div class="individual_main">
+                    <div class="individual_main_content">
                         <h1><a href="${pageContext.request.contextPath}/article?action=view&id=<%= article.getArticleId() %>">
                             <%= article.getTitle() %>
                         </a></h1>
@@ -92,17 +92,7 @@
                     }
                 %>
             </div>
-            <div class="right_main">
-                <h1>Categories</h1>
-                <div class='category_list'>
-                    <div>Technology</div>
-                    <div>Science</div>
-                    <div>Health</div>
-                    <div>Business</div>
-                    <div>Culture</div>
-                    <div>Politics</div>
-                </div>
-            </div>
+           
         </div>
     </main>
     <%@ include file="../component/footer.jsp" %>

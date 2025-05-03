@@ -66,6 +66,52 @@ public class ArticleDAO {
         return articles;
     }
 
+ // Retrieve articles by category
+    public List<Article> getArticlesByCategory(int categoryId) throws SQLException {
+        List<Article> articles = new ArrayList<>();
+        String query = "SELECT * FROM article WHERE categoryId = ?";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement pst = connection.prepareStatement(query)) {
+            pst.setInt(1, categoryId);
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    articles.add(new Article(
+                        rs.getInt("articleId"),
+                        rs.getString("title"),
+                        rs.getString("content"),
+                        rs.getInt("authorId"),
+                        rs.getObject("publishDate", LocalDateTime.class),
+                        rs.getInt("categoryId")
+                    ));
+                }
+            }
+        }
+        return articles;
+    }
+
+    // Retrieve articles by author
+    public List<Article> getArticlesByAuthor(int authorId) throws SQLException {
+        List<Article> articles = new ArrayList<>();
+        String query = "SELECT * FROM article WHERE authorId = ?";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement pst = connection.prepareStatement(query)) {
+            pst.setInt(1, authorId);
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    articles.add(new Article(
+                        rs.getInt("articleId"),
+                        rs.getString("title"),
+                        rs.getString("content"),
+                        rs.getInt("authorId"),
+                        rs.getObject("publishDate", LocalDateTime.class),
+                        rs.getInt("categoryId")
+                    ));
+                }
+            }
+        }
+        return articles;
+    }
+
     // Update an article
     public void updateArticle(Article article) throws SQLException {
         String query = "UPDATE article SET title = ?, content = ?, publishDate = ?, categoryId = ? WHERE articleId = ?";
@@ -74,7 +120,7 @@ public class ArticleDAO {
             pst.setString(1, article.getTitle());
             pst.setString(2, article.getContent());
             pst.setObject(3, article.getPublishDate());
-            pst.setInt(4, article.getCategoryId()); // Changed to categoryId
+            pst.setInt(4, article.getCategoryId());
             pst.setInt(5, article.getArticleId());
             pst.executeUpdate();
         }

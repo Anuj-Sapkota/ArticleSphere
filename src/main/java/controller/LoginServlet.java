@@ -46,6 +46,8 @@ public class LoginServlet extends HttpServlet {
                 session.setMaxInactiveInterval(60*30);
                 session.setAttribute("user", user);
                 session.setAttribute("userId", user.getUserId());
+                session.setAttribute("firstname", user.getFirstName());
+                session.setAttribute("lastname",user.getLastName());
                 session.setAttribute("role", user.getRole());
                 // Set userToken cookie only if "Remember Me" is checked
                 if ("on".equals(rememberMe)) {

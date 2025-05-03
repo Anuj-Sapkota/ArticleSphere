@@ -118,3 +118,21 @@ nav h1
             background-color: #eee;
             margin: 8px 0;
         }
+.search_and_icon
+{
+	position:relative;
+}
+.search_and_icon input 
+{
+	width:14rem;
+	padding:0.4rem 1rem;
+	border:1px solid black;
+	border-radius:5px;
+}
+.mag_glass
+{
+	position:absolute;
+	left:12rem;
+	top:0.5rem;	
+	
+}

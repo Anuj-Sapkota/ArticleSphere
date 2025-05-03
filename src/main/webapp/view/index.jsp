@@ -16,7 +16,6 @@
 
 <%
 //Get the current page name to highlight the active link
-String currentPage = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/") + 1);
     session = request.getSession(false);
     Object userObj = (session != null) ? session.getAttribute("user") : null;
 
@@ -88,6 +87,7 @@ String currentPage = request.getRequestURI().substring(request.getRequestURI().l
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Link to nav.css for styling nav.jsp -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/component/nav.css">
+    
         <link rel="stylesheet" href="${pageContext.request.contextPath}/component/footer.css">
     
     <!-- Link to nav.js for hamburger menu toggle in nav.jsp -->
@@ -97,47 +97,7 @@ String currentPage = request.getRequestURI().substring(request.getRequestURI().l
 </head>
 <body>
     <!-- Include the Navigation Bar -->
-   <nav>
-   <h1>Article Sphere</h1>
-   <ul class="pages">
-           <li><a href="${pageContext.request.contextPath}/home" class="<%= currentPage.equals("index.jsp") ? "active" : "" %>">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/about.jsp" class="<%= currentPage.equals("about.jsp") ? "active" : "" %>">About</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/contact.jsp" class="<%= currentPage.equals("contact.jsp") ? "active" : "" %>">Contact Us</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/articleList.jsp" class="<%= currentPage.equals("category.jsp") ? "active" : "" %>">Articles</a></li>
-    </ul>
-      <div class="nav-buttons">
-            <button class="write-btn" onclick="window.location.href='Articlepublishing.jsp'">
-                <i class="fa-regular fa-pen-to-square"></i>
-                Write
-            </button>
-            <button class="icon-btn">
-                <i class="fa-solid fa-bell"></i>
-            </button>
-            <div class="dropdown">
-                <button class="profile-btn" id="profileBtn">B</button>
-                <div class="dropdown-content" id="profileDropdown">
-                    <a href="${pageContext.request.contextPath}/view/Profile.jsp">
-                        <span class="menu-icon"><i class="fa-solid fa-user"></i></span>
-                        Profile
-                    </a>
-                    <a href="#">
-                        <span class="menu-icon"><i class="fa-solid fa-book"></i></span>
-                        Create
-                    </a>
-                    <a href="#">
-                        <span class="menu-icon"><i class="fa-solid fa-gear"></i></span>
-                        Settings
-                    </a>
-                    <div class="divider"></div>
-                    <a href="#">
-                        <span class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
-                        Sign out
-                    </a>
-                </div>
-            </div>
-        </div>
-   </nav>
-
+    <%@ include file="../component/nav.jsp" %>
     <%-- This is where the header lies --%>
     <header>
     <div class="logo_box">
