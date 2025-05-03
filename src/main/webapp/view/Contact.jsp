@@ -19,7 +19,7 @@
 
 
      <%@ include file="../component/nav.jsp" %>
-    <div>
+    <div class="main">
         <div id="header">
             <h1>Contact</h1>
 
@@ -34,11 +34,13 @@
          <i class="fa-brands fa-twitter"></i>
         </div>
 
-        <div id="input">
-            <input type="text" placeholder="messages">
-        </div>
-        <button id="btn">Send</button>
-    </div>    
+       <div id="input">
+    <form action="${pageContext.request.contextPath}/contact" method="post">
+        <textarea class="textArea" name="messageContent" placeholder="Your message..." required></textarea><br>
+        <button type="submit" id="btn">Send</button>
+    </form>
+</div>
+</div>
 
     <%@ include file="../component/footer.jsp" %>
     

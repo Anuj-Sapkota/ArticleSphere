@@ -29,16 +29,16 @@
                         <h1><a href="${pageContext.request.contextPath}/article?action=view&id=${featured.articleId}">
                             ${featured.title}
                         </a></h1>
-                        <p>
+                        <div class="content-wrapper">
                             <c:choose>
                                 <c:when test="${fn:length(featured.content) > 150}">
-                                    <c:out value="${fn:substring(featured.content, 0, 150)}" escapeXml="true"/>...
+                                    ${fn:substring(featured.content, 0, 150)}...
                                 </c:when>
                                 <c:otherwise>
-                                    <c:out value="${featured.content}" escapeXml="true"/>
+                                    ${featured.content}
                                 </c:otherwise>
                             </c:choose>
-                        </p>
+                        </div>
                     </div>
                 </div>
                 <div class='right_header'>
@@ -48,16 +48,16 @@
                                 <h1><a href="${pageContext.request.contextPath}/article?action=view&id=${article.articleId}">
                                     ${article.title}
                                 </a></h1>
-                                <p>
+                                <div class="content-wrapper">
                                     <c:choose>
                                         <c:when test="${fn:length(article.content) > 100}">
-                                            <c:out value="${fn:substring(article.content, 0, 100)}" escapeXml="true"/>...
+                                            ${fn:substring(article.content, 0, 100)}...
                                         </c:when>
                                         <c:otherwise>
-                                            <c:out value="${article.content}" escapeXml="true"/>
+                                            ${article.content}
                                         </c:otherwise>
                                     </c:choose>
-                                </p>
+                                </div>
                             </div>
                         </div>
                     </c:forEach>
@@ -78,16 +78,16 @@
                             <h1><a href="${pageContext.request.contextPath}/article?action=view&id=${article.articleId}">
                                 ${article.title}
                             </a></h1>
-                            <p>
+                            <div class="content-wrapper">
                                 <c:choose>
                                     <c:when test="${fn:length(article.content) > 100}">
-                                        <c:out value="${fn:substring(article.content, 0, 100)}" escapeXml="true"/>...
+                                        ${fn:substring(article.content, 0, 100)}...
                                     </c:when>
                                     <c:otherwise>
-                                        <c:out value="${article.content}" escapeXml="true"/>
+                                        ${article.content}
                                     </c:otherwise>
                                 </c:choose>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </c:forEach>
