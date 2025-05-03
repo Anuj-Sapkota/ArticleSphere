@@ -1,16 +1,14 @@
 package controller;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-
 import dao.CategoryDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Category;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet("/home")
 public class IndexServlet extends HttpServlet {
@@ -22,14 +20,13 @@ public class IndexServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            List<Category> categories = categoryDAO.getAllCategories();
+            List categories = categoryDAO.getAllCategories();
             request.setAttribute("categories", categories);
             request.getRequestDispatcher("/view/index.jsp").forward(request, response);
         } catch (SQLException e) {
-            throw new ServletException(e);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error: " + e.getMessage());
         }
     }
 }

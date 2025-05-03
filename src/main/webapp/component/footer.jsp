@@ -13,9 +13,9 @@
     </div>
     <div class='other_pages'>
     <h2>Links</h2>
-    <p>Home</p>
-    <p>About</p>
-    <p>Contact</p>
+    <p><a href="${pageContext.request.contextPath}/home">Home</a></p>
+    <p><a href="${pageContext.request.contextPath}/view/about.jsp">About</a></p>
+    <p><a href="${pageContext.request.contextPath}/view/contact.jsp">Contact</a></p>
     </div>
     <div class='newsletter'>
     <input type='email' placeholder='Enter your email'>

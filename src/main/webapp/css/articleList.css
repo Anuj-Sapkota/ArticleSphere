@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "utf-8";
 * {
     margin: 0;
     padding: 0;
@@ -6,122 +6,149 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'segoe ui', tahoma, geneva, verdana, sans-serif;
     background-color: #fff;
     color: #000;
-    
-    
-}
-header, main
-{
-	padding:1rem;
-}
-header h1
-{
-	margin-top:2rem;
-}
-.container
-{
-	display:flex;
-	gap:1rem;
-}
-.left_header
-{
-	width:70%;
-	display:flex;
-	margin-top:1rem;
-	height:15.5rem;
-	gap:3rem;
-	 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-	 padding:2rem;
-}
-.right_header
-{
-	margin-top:1.2rem;
-	display:flex;
-	flex-direction:column;
-	gap:1.2rem;
 }
 
-.individual_right_header
-{
-	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-	height:7rem;
-	display:flex;
-	gap:1rem;
-	align-items:center;
-	padding:1rem;
+header, main {
+    padding: 1rem;
 }
-.individual_right_header h1
-{
-	font-size:1.5rem;
-	margin-top:5px;
+
+header h1 {
+    margin-top: 2rem;
 }
-.individual_right_header img
-{
-	height:5rem;
+
+.container {
+    display: flex;
+     flex-wrap: wrap;/* Prevent wrapping */
+    gap: 1rem;
+    align-items: flex-start; /* Align items at the top */
+    width: 100%;
+    max-width: 1200px; /* Limit container width */
+    margin: 0 auto; /* Center the container */
 }
-.left_header img
-{
-	height:10rem;
+
+.left_header {
+    
+    flex: 2;
+    display: flex;
+    margin-top: 1rem;
+    height: 15.5rem;
+    gap: 1rem; /* Reduced gap */
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    padding: 1rem; /* Reduced padding */
+    flex-shrink: 0; /* Prevent shrinking */
 }
-.left_header_content
-{
-	text-align:justify;
-	gap:2rem;
-	display:flex;
-	flex-direction:column;
-	
-}
-main 
-{
-	display:flex;
+
+
+
+
+.right_header {
 	flex: 1;
-	gap:2rem;
-}
-.main_content
-{
-	width:100%;
-	display:flex;
-	
-}
-.left_main
-{
-	min-width:100%;
-}
-.individual_main
-{
-	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-	width:100%;
-	display:flex;
-	gap:1rem;
-	padding-inline:1rem;
-	height:5rem;
-	align-items:center;
-	margin-bottom:1rem;
+    /* Explicit width for right_header */
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
-.right_main
-{
-	width:40%;
-	padding-inline:2rem;
+.individual_right_header {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    height: 7rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
 }
-.individual_main_content
-{
-	text-align:justify;
-	gap:0.4rem;
-	display:flex;
-	flex-direction:column;
-	
-}
-.individual_main_content h1 a, .right_header_content h1 a, .left_header_content h1 a
 
-{
-	text-decoration:none;
-	color:black;
+.individual_right_header h1 {
+    font-size: 1.2rem; /* Reduced font size to fit better */
+    margin-top: 5px;
 }
-.individual_main_content h1
-{
-	font-size:1.5rem;
-	margin-top:0.5rem;
+
+.individual_right_header img {
+    height: 5rem;
+}
+
+.left_header img {
+    height: 10rem;
+}
+
+.left_header_content {
+    text-align: justify;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    gap: 2rem;
+}
+
+.main_content {
+    width: 100%;
+    display: flex;
+    max-width: 1200px; /* Match container width */
+    margin: 0 auto; /* Center the content */
+}
+
+.left_main {
+    min-width: 100%;
+}
+
+.individual_main {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    padding-inline: 1rem;
+    height: 5rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.right_main {
+    width: 40%;
+    padding-inline: 2rem;
+}
+
+.individual_main_content {
+    text-align: justify;
+    gap: 0.4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.individual_main_content h1 a, .right_header_content h1 a, .left_header_content h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+.individual_main_content h1 {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+
+    .left_header, .right_header {
+        width: 100%;
+    }
+
+    .left_header {
+        height: auto; /* Allow height to adjust */
+    }
+
+    .individual_right_header {
+        height: auto; /* Allow height to adjust */
+    }
 }

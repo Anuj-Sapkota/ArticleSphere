@@ -44,6 +44,29 @@ public class ArticleDAO {
         }
         return null;
     }
+    //Retrieve articles by Title
+    public Article getArticleByTitle(String title) throws SQLException {
+        String sql = "SELECT articleId, title, content, authorId, publishDate, categoryId FROM article WHERE title = ?";
+
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, title);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new Article(
+                    rs.getInt("articleId"),
+                    rs.getString("title"),
+                    rs.getString("content"),
+                    rs.getInt("authorId"),
+                    rs.getTimestamp("publishDate").toLocalDateTime(),
+                    rs.getInt("categoryId")
+                );
+            }
+            return null; // Return null if no article is found
+        }
+    }
+
 
     // Retrieve all articles
     public List<Article> getAllArticles() throws SQLException {
@@ -69,21 +92,20 @@ public class ArticleDAO {
  // Retrieve articles by category
     public List<Article> getArticlesByCategory(int categoryId) throws SQLException {
         List<Article> articles = new ArrayList<>();
-        String query = "SELECT * FROM article WHERE categoryId = ?";
-        try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement pst = connection.prepareStatement(query)) {
-            pst.setInt(1, categoryId);
-            try (ResultSet rs = pst.executeQuery()) {
-                while (rs.next()) {
-                    articles.add(new Article(
-                        rs.getInt("articleId"),
-                        rs.getString("title"),
-                        rs.getString("content"),
-                        rs.getInt("authorId"),
-                        rs.getObject("publishDate", LocalDateTime.class),
-                        rs.getInt("categoryId")
-                    ));
-                }
+        String sql = "SELECT articleId, title, content, authorId, publishDate, categoryId FROM article WHERE categoryId = ? ORDER BY publishDate DESC";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, categoryId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                articles.add(new Article(
+                    rs.getInt("articleId"),
+                    rs.getString("title"),
+                    rs.getString("content"),
+                    rs.getInt("authorId"),
+                    rs.getTimestamp("publishDate").toLocalDateTime(),
+                    rs.getInt("categoryId")
+                ));
             }
         }
         return articles;

@@ -28,6 +28,15 @@ footer {
 {
 	margin-bottom:1rem;
 }
+.other_pages p a
+{
+	color:white;
+	text-decoration:none;
+}
+.other_pages p a:hover
+{
+	text-decoration:underline;
+}
 .newsletter
 {
 	display:flex;
@@ -35,7 +44,7 @@ footer {
 	gap:1rem;
 
 	}
-	
+
 .newsletter input
 {
 	height:2.5rem;

@@ -20,8 +20,11 @@
 <nav>
    <h1>Article Sphere</h1>
    <div class="search_and_icon">
-   <input type="search" id="search_bar" placeholder="Search">
-    <i class="fa-solid fa-magnifying-glass mag_glass"></i></div>
+   <form action="${pageContext.request.contextPath}/search" method="get"><input type="search" name="query" id="search_bar" placeholder="Search">
+    <i class="fa-solid fa-magnifying-glass mag_glass"></i>
+    </form></div>
+    
+   
    
    <ul class="pages">
        <li><a href="${pageContext.request.contextPath}/home" class="<%= currentPage.equals("index.jsp") ? "active" : "" %>">Home</a></li>

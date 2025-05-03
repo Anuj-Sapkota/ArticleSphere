@@ -15,18 +15,7 @@
 <title>Contact - ArticleSphere</title>
 </head>
 <body>
- <!-- <div id="navbar">
-        <div id="nav1">
-            <i class="fa-solid fa-bars"></i>
-        <img src="../image.png" alt="images">  
-        </div>
-        <div id="nav2">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        <i class="fa-regular fa-user"></i>
-        </div>
-        
-        
-    </div>-->
+
 
 
      <%@ include file="../component/nav.jsp" %>

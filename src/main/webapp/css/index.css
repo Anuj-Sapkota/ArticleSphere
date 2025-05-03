@@ -96,6 +96,24 @@ header
 	position:absolute;
 	right:11.6rem;
 	top:0.8rem;
+}
+
+/* Style for article result */
+.article-result {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.article-result h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.article-result p {
+    margin-bottom: 0.5rem;
 }/* 1) Font & box‑sizing */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 * { box-sizing: border-box; font-family: 'Raleway', sans-serif; }

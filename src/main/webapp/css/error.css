@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    overflow:hidden;
+    line-height: 1.6;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+.container
+{
+	min-height:70.5vh;
+}
+header
+{
+	height:23vh;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	
+}
+main
+{
+	
+}
+main h1
+{
+	
+	width:30rem;
+	margin-inline:auto;
+	border-bottom: 2px solid black;
+}
+.search_container
+{
+	margin-top:2rem;	
+	margin-left:28rem;
+	position:relative;
+}
+#search
+{
+	width:60%;
+	height:2.7rem;
+	border-radius:5px;
+	font-size:1rem;
+	padding-inline:1rem;
+}
+.search_icon
+{
+	position:absolute;
+	right:27.9rem;
+	top:0.8rem;
+}

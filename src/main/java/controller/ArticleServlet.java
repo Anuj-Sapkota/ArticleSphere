@@ -53,7 +53,26 @@ public class ArticleServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+    	String action = request.getParameter("action");
+        if ("view".equals(action)) {
+            try {
+                int articleId = Integer.parseInt(request.getParameter("id"));
+                Article article = (articleId > 0) ? articleDAO.getArticleById(articleId) : null;
+                List<Category> categories = categoryDAO.getAllCategories();
+                request.setAttribute("categories", categories);
+
+                if (article != null) {
+                    request.setAttribute("article", article);
+                    request.getRequestDispatcher("/view/article.jsp").forward(request, response);
+                } else {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Article not found");
+                }
+            } catch (SQLException e) {
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error: " + e.getMessage());
+            } catch (NumberFormatException e) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid article ID");
+            }
+        }
         try {
             switch (action) {
                 case "create":
