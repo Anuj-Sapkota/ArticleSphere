@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/view/adminPage.jsp"})
+@WebFilter(urlPatterns = {"/dashboard", "/view/categoryAdd.jsp", "/view/dashboard.jsp", "/category"})
 public class RoleFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -24,7 +24,7 @@ public class RoleFilter implements Filter {
         // Checks if user is logged in or not
         if (session == null || session.getAttribute("user") == null) {
             System.out.println("RoleFilter: User not logged in, redirecting to login.jsp");
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/view/login.jsp");
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/");
             return;
         }
 
@@ -32,7 +32,7 @@ public class RoleFilter implements Filter {
         String role = (String) session.getAttribute("role");
         if (role == null) {
             System.out.println("RoleFilter: Role not found in session, redirecting to index.jsp");
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/view/index.jsp");
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/home");
             return;
         }
 
@@ -42,7 +42,7 @@ public class RoleFilter implements Filter {
             chain.doFilter(request, response); 
         } else {
             System.out.println("RoleFilter: Non-admin user, redirecting to index.jsp");
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/view/index.jsp");}
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/home");}
         }
 
     @Override
