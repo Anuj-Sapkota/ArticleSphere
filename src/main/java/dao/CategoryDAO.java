@@ -64,14 +64,35 @@ public class CategoryDAO {
         return null;
     }
 
-    // Delete a category by ID
-    public boolean deleteCategory(int categoryId) throws SQLException {
-        String query = "DELETE FROM category WHERE categoryId = ?";
+    // Update a category by ID
+    public boolean updateCategory(Category category) throws SQLException {
+        String query = "UPDATE category SET categoryName = ?, categoryDescription = ? WHERE categoryId = ?";
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement pst = connection.prepareStatement(query)) {
-            pst.setInt(1, categoryId);
+            pst.setString(1, category.getCategoryName());
+            pst.setString(2, category.getCategoryDescription());
+            pst.setInt(3, category.getCategoryId());
             int affectedRows = pst.executeUpdate();
             return affectedRows > 0;
+        }
+    }
+
+    // Delete a category by ID
+    public void deleteCategory(int categoryId) throws SQLException {
+        // Delete all articles associated with the category
+        String deleteArticlesQuery = "DELETE FROM article WHERE categoryId = ?";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement pst = connection.prepareStatement(deleteArticlesQuery)) {
+            pst.setInt(1, categoryId);
+            pst.executeUpdate();
+        }
+
+        // Delete the category itself
+        String deleteCategoryQuery = "DELETE FROM category WHERE categoryId = ?";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement pst = connection.prepareStatement(deleteCategoryQuery)) {
+            pst.setInt(1, categoryId);
+            pst.executeUpdate();
         }
     }
 }

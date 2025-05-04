@@ -67,7 +67,6 @@ public class ArticleDAO {
         }
     }
 
-
     // Retrieve all articles
     public List<Article> getAllArticles() throws SQLException {
         List<Article> articles = new ArrayList<>();
@@ -82,13 +81,14 @@ public class ArticleDAO {
                     rs.getString("content"),
                     rs.getInt("authorId"),
                     rs.getObject("publishDate", LocalDateTime.class),
-                    rs.getInt("categoryId") // Changed to categoryId
+                    rs.getInt("categoryId")
                 ));
             }
         }
         return articles;
     }
 
+    
  // Retrieve articles by category
     public List<Article> getArticlesByCategory(int categoryId) throws SQLException {
         List<Article> articles = new ArrayList<>();
@@ -155,6 +155,18 @@ public class ArticleDAO {
              PreparedStatement pst = connection.prepareStatement(query)) {
             pst.setInt(1, articleId);
             pst.executeUpdate();
+        }
+    }
+    //Count all the articles.
+    public int getTotalArticles() throws SQLException {
+        String query = "SELECT COUNT(*) FROM article";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement pst = connection.prepareStatement(query);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
         }
     }
 }

@@ -4,31 +4,11 @@ import java.sql.*;
 import java.time.LocalDateTime;
 
 import model.User;
+import utils.DatabaseUtil;
 
 public class UserDAO 
 {
 	
-	
-	// database connection parameters
-	private static final String URL = "jdbc:mysql://localhost:3306/articlesphere";
-	private static final String USER = "root";
-	private static final String PASSWORD = "";
-	static 
-	{
-		//load the MYSql JDBC driver
-		try 
-		{
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch(ClassNotFoundException e)
-		{
-			throw new RuntimeException("Failed to load MySQL driver", e);
-		}
-	}
-	
-	public static Connection getConnection(String url, String user, String password) throws SQLException
-	{
-		return DriverManager.getConnection(url, user, password);
-	}
 	public static int registerUser(User user) throws SQLException 
 	{
 		int generatedId = -1;
@@ -36,7 +16,7 @@ public class UserDAO
 		
 		// password hashing for security
 		String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-		try(Connection connection = getConnection(URL, USER, PASSWORD);
+		try(Connection connection =  DatabaseUtil.getConnection();
 			PreparedStatement pst = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);) 
 		{
 			pst.setString(1, user.getFirstName());
@@ -70,7 +50,7 @@ public class UserDAO
 	public User loginUser(String email, String password) throws SQLException
 	{
 		String query = "SELECT * FROM user WHERE email = ?";
-		try(Connection connection = getConnection(URL, USER, PASSWORD);
+		try(Connection connection =  DatabaseUtil.getConnection();
 			PreparedStatement pst = connection.prepareStatement(query))
 		{
 			pst.setString(1, email);
@@ -103,7 +83,7 @@ public class UserDAO
 
     public User getUserById(int userId) throws SQLException {
         String query = "SELECT * FROM user WHERE userId = ?";
-        try (Connection connection = getConnection(URL, USER, PASSWORD);
+        try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement pst = connection.prepareStatement(query)) {
             pst.setInt(1, userId);
             
@@ -124,5 +104,31 @@ public class UserDAO
             }
         }
         return null;
+    }
+    public int getTotalUsers() throws SQLException {
+        String query = "SELECT COUNT(*) FROM user";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement pst = connection.prepareStatement(query);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
+        }
+    }
+
+    // New method to fetch firstName and lastName by user ID
+    public String getUserFullName(int userId) throws SQLException {
+        String query = "SELECT firstName, lastName FROM user WHERE userId = ?";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement pst = connection.prepareStatement(query)) {
+            pst.setInt(1, userId);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("firstName") + " " + rs.getString("lastName");
+                }
+            }
+        }
+        return "Unknown User";
     }
 }

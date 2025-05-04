@@ -1,6 +1,8 @@
 package model;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class Article {
     private int articleId;
@@ -78,3 +80,4 @@ public class Article {
         this.categoryId = categoryId;
     }
 }
+   

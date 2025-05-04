@@ -27,7 +27,7 @@ public class CategoryServlet extends HttpServlet {
             // 1) fetch all categories
             List<Category> categories = categoryDAO.getAllCategories();
             request.setAttribute("categories", categories);
-            // 2) forward to JSP
+            // 2) forward to JSP (assuming dashboard.jsp is the target based on context)
             request.getRequestDispatcher("/view/categoryAdd.jsp")
                    .forward(request, response);
         } catch (SQLException e) {
@@ -38,13 +38,14 @@ public class CategoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // keep your create/delete logic here (unchanged)
         String action = request.getParameter("action");
         try {
             if ("create".equals(action)) {
                 createCategory(request, response);
             } else if ("delete".equals(action)) {
                 deleteCategory(request, response);
+            } else if ("update".equals(action)) {
+                updateCategory(request, response);
             }
         } catch (Exception e) {
             throw new ServletException(e);
@@ -69,5 +70,32 @@ public class CategoryServlet extends HttpServlet {
         int categoryId = Integer.parseInt(request.getParameter("id"));
         categoryDAO.deleteCategory(categoryId);
         response.sendRedirect(request.getContextPath() + "/category?success=Category deleted successfully");
+    }
+
+    private void updateCategory(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        String categoryIdStr = request.getParameter("categoryId");
+        String categoryName = request.getParameter("categoryName");
+        String categoryDescription = request.getParameter("categoryDescription");
+
+        if (categoryIdStr == null || categoryName == null || categoryName.trim().isEmpty()) {
+            response.sendRedirect(request.getContextPath() + "/category?editError=Category ID and name are required");
+            return;
+        }
+
+        int categoryId;
+        try {
+            categoryId = Integer.parseInt(categoryIdStr);
+        } catch (NumberFormatException e) {
+            response.sendRedirect(request.getContextPath() + "/category?editError=Invalid category ID");
+            return;
+        }
+
+        Category category = new Category(categoryId, categoryName, categoryDescription);
+        boolean updated = categoryDAO.updateCategory(category);
+        if (updated) {
+            response.sendRedirect(request.getContextPath() + "/category?editSuccess=Category updated successfully");
+        } else {
+            response.sendRedirect(request.getContextPath() + "/category?editError=Failed to update category");
+        }
     }
 }
