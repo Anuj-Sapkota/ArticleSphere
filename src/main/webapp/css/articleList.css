@@ -25,17 +25,17 @@ header h1 {
     gap: 1rem;
     align-items: flex-start;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1395px;
+    margin: 0 3rem;
     position: relative;
     z-index: 1;
 }
 
 .left_header {
-    width: 70%;
+    width: 63%;
     display: flex;
     margin-top: 1rem;
-    min-height: 15.5rem;
+    min-height: 19.5rem;
     gap: 1rem;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
     padding: 1rem;
@@ -45,7 +45,7 @@ header h1 {
 }
 
 .right_header {
-    width: 30%;
+    width: 35%;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -101,8 +101,8 @@ main {
 .main_content {
     width: 100%;
     display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1395px;
+    margin: 0 3rem;
 }
 
 .left_main {

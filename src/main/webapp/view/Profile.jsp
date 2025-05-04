@@ -25,10 +25,7 @@
                     <div class="profile-bio" id="user-bio"></div>
                 </div>
                 <div class="divider"></div>
-                <div class="menu-options">
-                    <div class="menu-item active">Home</div>
-                    <div class="menu-item">About</div>
-                </div>
+                
             </div>
             <div class="profile-actions">
                 <button class="more-btn">
@@ -50,17 +47,9 @@
                 
                 <h2 class="list-title">Reading list</h2>
                 
-                <div class="list-content">
-                    <i class="fa-solid fa-lock"></i>
-                    No stories
-                    <div class="list-actions">
-                        <button class="more-btn">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </button>
-                    </div>
-                </div>
                 
-                <div class="section-title">YOUR ARTICLES</div>
+                
+                <div class="section-title">Your Articles</div>
                 <div class="content-list" id="articles-container">
                     <%
                         Integer userId = (Integer) session.getAttribute("userId");
@@ -95,20 +84,14 @@
                         }
                     %>
                 </div>
-                <div class="view-more">
-                    View More
-                    <span class="arrow-down"></span>
-                </div>
                 
-                <div class="section-title">YOUR COMMENTS</div>
+                
+                <div class="section-title">Your Comments</div>
                 <div class="content-list" id="comments-container">
                     <!-- Comments will be populated dynamically -->
                     <div class="content-item">Comment 1</div>
                 </div>
-                <div class="view-more">
-                    View More
-                    <span class="arrow-down"></span>
-                </div>
+                
             </div>
             
             <!-- User Info Sidebar -->

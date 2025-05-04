@@ -145,3 +145,9 @@ body {
     }
     
 }
+.success-message {
+    color: green;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+}

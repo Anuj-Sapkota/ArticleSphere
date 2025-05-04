@@ -31,8 +31,8 @@
                         </a></h1>
                         <div class="content-wrapper">
                             <c:choose>
-                                <c:when test="${fn:length(featured.content) > 150}">
-                                    ${fn:substring(featured.content, 0, 150)}...
+                                <c:when test="${fn:length(featured.content) > 450}">
+                                    ${fn:substring(featured.content, 0, 450)}...
                                 </c:when>
                                 <c:otherwise>
                                     ${featured.content}
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class='right_header'>
-                    <c:forEach var="article" items="${articles}" begin="1" end="${articles.size() - 1}">
+                    <c:forEach var="article" items="${articles}" begin="1" end="2">
                         <div class='individual_right_header'>
                             <div class='right_header_content'>
                                 <h1><a href="${pageContext.request.contextPath}/article?action=view&id=${article.articleId}">
@@ -81,7 +81,7 @@
                             <div class="content-wrapper">
                                 <c:choose>
                                     <c:when test="${fn:length(article.content) > 100}">
-                                        ${fn:substring(article.content, 0, 100)}...
+                                        ${fn:substring(article.content, 0, 180)}...
                                     </c:when>
                                     <c:otherwise>
                                         ${article.content}

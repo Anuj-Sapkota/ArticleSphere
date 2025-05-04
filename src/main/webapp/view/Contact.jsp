@@ -33,12 +33,24 @@
          <i class="fa-brands fa-instagram"></i>
          <i class="fa-brands fa-twitter"></i>
         </div>
-
+<%-- Show success message if "success=true" is in URL --%>
+<%
+    String success = request.getParameter("success");
+    if ("true".equals(success)) {
+%>
+    <p class="success-message" style="color: green; text-align: center; margin-top: 1rem;">Message sent successfully!</p>
+<%
+    }
+%>
        <div id="input">
+       
     <form action="${pageContext.request.contextPath}/contact" method="post">
-        <textarea class="textArea" name="messageContent" placeholder="Your message..." required></textarea><br>
-        <button type="submit" id="btn">Send</button>
-    </form>
+    <textarea class="textArea" name="messageContent" placeholder="Your message..." required></textarea><br>
+    <button type="submit" id="btn">Send</button>
+</form>
+
+
+
 </div>
 </div>
 

@@ -1,6 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="dao.CategoryDAO, model.Category" %>
+<%@ page import="dao.UserDAO, model.User" %>
+<%@ page import="java.time.format.DateTimeFormatter, java.time.LocalDateTime" %>
+
+<%
+//Fetch author's full name
+int authorId = ((model.Article) request.getAttribute("article")).getAuthorId();
+UserDAO userDAO = new UserDAO(); // replace with your actual DAO class if named differently
+User author = userDAO.getUserById(authorId);
+String firstname = (author != null) ? author.getFirstName() : "Unknown Author";
+String lastname = (author != null) ? author.getLastName() : "";
+String fullname = firstname + " " + lastname;
+
+LocalDateTime publishDate = ((model.Article) request.getAttribute("article")).getPublishDate();
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, MMMM d");
+String formattedDate = publishDate.format(formatter);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +45,7 @@
                 Category category = categoryDAO.getCategoryById(categoryId);
                 String categoryName = (category != null) ? category.getCategoryName() : "Uncategorized";
             %>
-            <p>By Author ID: ${article.authorId} | ${article.publishDate} | Category: <%= categoryName %></p>
+            <p>By: <%= fullname %> | <%=formattedDate %> | Category: <%= categoryName %></p>
         </header>
         <main>
             <div class="content">
