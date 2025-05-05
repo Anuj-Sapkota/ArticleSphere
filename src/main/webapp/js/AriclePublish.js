@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // --------- PROFILE DROPDOWN FUNCTIONALITY ---------
    // Toggle dropdown menu
    document.getElementById('profileBtn').addEventListener('click', function(event) {
@@ -131,3 +132,13 @@
        // Set initial height of textarea
        textarea.style.height = textarea.scrollHeight + 'px';
    });
+=======
+function submitArticle() {
+         document.getElementById('article-form').submit();
+     }
+
+     function displayFileName(input) {
+         const fileName = input.files.length > 0 ? input.files[0].name : "No file chosen";
+         document.getElementById('file-name').textContent = fileName;
+     }
+>>>>>>> 765c853b29a8cadcaa32678713bee7964952a390
