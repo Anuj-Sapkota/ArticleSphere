@@ -62,11 +62,11 @@
                                     <div class="content-item">
                                         <a href="${pageContext.request.contextPath}/article?action=view&id=<%= article.getArticleId() %>"><%= article.getTitle() %></a>
                                         <div class="article-actions">
-                                            <a href="${pageContext.request.contextPath}/article?action=update&id=<%= article.getArticleId() %>">Edit</a> |
+                                            <a style="background:blue; border:none; color:white; cursor:pointer; padding:0.2rem 0.8rem;;" href="${pageContext.request.contextPath}/article?action=update&id=<%= article.getArticleId() %>">Edit</a> |
                                             <form action="${pageContext.request.contextPath}/article" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this article?');">
                                                 <input type="hidden" name="action" value="delete">
                                                 <input type="hidden" name="id" value="<%= article.getArticleId() %>">
-                                                <button type="submit" style="background:none; border:none; color:blue; cursor:pointer; padding:0; text-decoration:underline;">Delete</button>
+                                                <button type="submit" style="background:red; border:none; color:white; cursor:pointer; padding:0.2rem 0.8rem;;">Delete</button>
                                             </form>
                                         </div>
                                     </div>

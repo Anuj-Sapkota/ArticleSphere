@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +8,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/register.css">
 <meta charset="UTF-8">
 <title>Register - ArticleSphere</title>
+<style>
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: none;
+    }
+</style>
 </head>
 <body>
 
@@ -21,7 +28,7 @@
 <h1>JOIN US !<br>WE ARE GLAD TO HAVE YOU</h1>
 </header>
 
-<%--Error message in registration fails --%>
+<%--Error message if registration fails --%>
 <% if(request.getAttribute("error") != null) {%>
 <p style="color: red;"><%= request.getAttribute("error") %></p>
 <%} %>
@@ -29,11 +36,12 @@
 <%--This is the section where the form lies i.e. the fields and the create button --%>
 <main>
 <div class="form_wrapper">
-<form action="${pageContext.request.contextPath}/register" method="post">
+<form action="${pageContext.request.contextPath}/register" method="post" onsubmit="return validatePassword()">
 <input type="text" id="firstName" name="firstName" placeholder="First name" required>
 <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
 <input type="email" id="email" name="email" placeholder="Email" required>
 <input type="password" id="password" name="password" placeholder="Password" required>
+<div id="passwordError" class="error-message">Password must be at least 8 characters, with at least one uppercase letter, one lowercase letter, and one number.</div>
 <button type="submit" class="signup_button">SIGN UP</button>
 </form>
 </div>
@@ -41,18 +49,39 @@
 
 <%--This is the button linked to login page --%>
 <footer>
-
 <div class='other_login'><p>Or signup with</p>
 <div class='other_login_icons'>
 <img src="${pageContext.request.contextPath}/assets/googleIcon.png" alt="google"/>
-<img src="${pageContext.request.contextPath}/assets/facebookIcon.png"alt="facebook"/>
-<img src="${pageContext.request.contextPath}/assets/XIcon.png"alt="X"/>
+<img src="${pageContext.request.contextPath}/assets/facebookIcon.png" alt="facebook"/>
+<img src="${pageContext.request.contextPath}/assets/XIcon.png" alt="X"/>
 </div>
 </div>
 <p class="footer_text">By signing up, you agree with the <span>Terms of Service</span> and <span>Privacy Policy</span>.</p>
 <div class='register_redirect'><p>Already Have an Account?</p><button onclick="window.location.href='${pageContext.request.contextPath}/'">Click Here</button></div>
 </footer>
 </div>
+
+<script>
+function validatePassword() {
+    const password = document.getElementById("password").value;
+    const passwordError = document.getElementById("passwordError");
+    
+    // Regular expression to check for:
+    // - At least 8 characters
+    // - At least one uppercase letter
+    // - At least one lowercase letter
+    // - At least one number
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+    
+    if (!passwordPattern.test(password)) {
+        passwordError.style.display = "block";
+        return false; // Prevent form submission
+    }
+    
+    passwordError.style.display = "none";
+    return true; // Allow form submission
+}
+</script>
 
 </body>
 </html>

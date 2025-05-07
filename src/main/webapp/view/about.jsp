@@ -46,7 +46,7 @@
             <li>Anuj Sapkota</li>
             <li>Ajeshwori Adhikari</li>
             <li>Bardan G Neupane</li>
-            <li>Rohisn Bhattarai</li>
+            <li>Rohish Bhattarai</li>
             <li>Susan Bajgain</li>
         </ul>
     </div>

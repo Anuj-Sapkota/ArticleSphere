@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -53,7 +54,7 @@ public class ArticleServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String action = request.getParameter("action");
+        String action = request.getParameter("action");
         if ("view".equals(action)) {
             try {
                 int articleId = Integer.parseInt(request.getParameter("id"));
@@ -185,6 +186,8 @@ public class ArticleServlet extends HttpServlet {
     private void deleteArticle(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int articleId = Integer.parseInt(request.getParameter("id"));
         articleDAO.deleteArticle(articleId);
-        response.sendRedirect(request.getContextPath() + "/view/Profile.jsp");
+        HttpSession session = request.getSession();
+        session.setAttribute("successMessage", "Successfully deleted the article.");
+        response.sendRedirect(request.getContextPath() + "/profile.jsp");
     }
 }

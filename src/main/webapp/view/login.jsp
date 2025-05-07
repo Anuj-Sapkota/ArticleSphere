@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,18 +17,18 @@
 <img src="${pageContext.request.contextPath}/assets/logo.jpg" alt="logo">
 <h1>WELCOME BACK! <br>READY TO GET STARTED?</h1>
 </header>
-<%--Display error if login fails --%>
-<% if(request.getParameter("registration") != null) { %>
-<p style="color: green;">Registration Successful! Please login.</p>
+<%--Display success message after registration --%>
+<% if(request.getParameter("registration") != null && request.getParameter("registration").equals("success")) { %>
+<p style="color: green;">Registration successful! Please login with the same email and password.</p>
 <%} %>
 
+<%--Display error if login fails --%>
 <% if(request.getAttribute("error") != null) { %>
 <p style="color: red;"><%= request.getAttribute("error") %></p>
 <%} %>
 
 <%--This is the section where the form lies i.e. the fields and the create button --%>
 <main>
-
     <div class="form_wrapper">
         <form action="${pageContext.request.contextPath}/login" method="post">
             <input type="email" name="email" id="email" placeholder="Email" required>
@@ -43,7 +42,7 @@
             </div>
             <button type="submit">LOGIN</button>
         </form>
-</div>
+    </div>
 </main>
 
 <%--This is the button linked to register page --%>

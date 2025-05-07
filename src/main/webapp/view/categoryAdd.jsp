@@ -24,7 +24,7 @@
     <div class="container">
       <div class="header">
         <h1>Admin Dashboard - Categories</h1>
-        <a href="logout" class="btn logout-btn">
+        <a href="${pageContext.request.contextPath}/view/logout.jsp" class="btn logout-btn">
           <i class="fas fa-sign-out-alt"></i> Logout
         </a>
       </div>

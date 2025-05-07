@@ -1,6 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="dao.CategoryDAO, java.util.List, model.Category, model.Article" %>
+<% 
+    // Get the current page name to highlight the active link
+    String currentPage = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/") + 1);
+
+    // Get FirstName and LastName from the session
+    String firstName = (String) session.getAttribute("firstname");
+    String lastName = (String) session.getAttribute("lastname");
+    String fullName = firstName + " " + lastName;
+    String initials = "?"; 
+
+    if (firstName != null && !firstName.trim().isEmpty() && lastName != null && !lastName.trim().isEmpty()) {
+        String firstInitial = firstName.substring(0, 1).toUpperCase();
+        String lastInitial = lastName.substring(0, 1).toUpperCase();
+        initials = firstInitial + lastInitial; 
+    } else if (firstName != null && !firstName.trim().isEmpty()) {
+        initials = firstName.substring(0, 1).toUpperCase(); 
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +46,7 @@
                 <i class="fa-solid fa-bell"></i>
             </button>
             <div class="dropdown">
-                <button class="profile-btn" id="profileBtn">B</button>
+                <button class="profile-btn" id="profileBtn"><%=initials %></button>
                 <div class="dropdown-content" id="profileDropdown">
                     <a href="#" onclick="window.location.href='${pageContext.request.contextPath}/view/Profile.jsp'">
                         <span class="menu-icon"><i class="fa-solid fa-user"></i></span>Profile
@@ -40,7 +58,7 @@
                     <a href="#" onclick="navigateTo('settings')">
                         <span class="menu-icon"><i class="fa-solid fa-gear"></i></span>Settings
                     </a>
-                    <a href="#" onclick="navigateTo('signout')">
+                    <a href="${pageContext.request.contextPath}/view/logout.jsp" onclick="navigateTo('signout')">
                         <span class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></span>Sign out
                     </a>
                 </div>
