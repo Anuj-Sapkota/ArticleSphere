@@ -1,14 +1,15 @@
 package controller;
 
 import dao.ContactDAO;
-import jakarta.servlet.http.HttpServlet;
 import model.Contact;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @WebServlet("/contact")
 public class ContactServlet extends HttpServlet {
@@ -24,6 +25,13 @@ public class ContactServlet extends HttpServlet {
         }
 
         // Redirect or show success
-        response.sendRedirect(request.getContextPath() + "/view/contact.jsp?success=true");
+        response.sendRedirect(request.getContextPath() + "/contact?success=true");
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+          
+            request.getRequestDispatcher("/WEB-INF/view/contact.jsp").forward(request, response);
+       
     }
 }

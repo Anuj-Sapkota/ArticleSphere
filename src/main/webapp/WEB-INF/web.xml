@@ -6,7 +6,7 @@
 
     <!-- Set the welcome file to login.jsp -->
     <welcome-file-list>
-        <welcome-file>view/login.jsp</welcome-file>
+        <welcome-file>/WEB-INF/view/login.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>

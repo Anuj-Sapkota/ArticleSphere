@@ -28,8 +28,8 @@
    
    <ul class="pages">
        <li><a href="${pageContext.request.contextPath}/home" class="<%= currentPage.equals("index.jsp") ? "active" : "" %>">Home</a></li>
-       <li><a href="${pageContext.request.contextPath}/view/about.jsp" class="<%= currentPage.equals("about.jsp") ? "active" : "" %>">About</a></li>
-       <li><a href="${pageContext.request.contextPath}/view/contact.jsp" class="<%= currentPage.equals("contact.jsp") ? "active" : "" %>">Contact Us</a></li>
+       <li><a href="${pageContext.request.contextPath}/about" class="<%= currentPage.equals("about.jsp") ? "active" : "" %>">About</a></li>
+       <li><a href="${pageContext.request.contextPath}/contact" class="<%= currentPage.equals("contact.jsp") ? "active" : "" %>">Contact Us</a></li>
        <li><a href="${pageContext.request.contextPath}/article?action=list" class="<%= currentPage.equals("articleList.jsp") ? "active" : "" %>">Articles</a></li>
    </ul>
    <div class="nav-buttons">
@@ -43,7 +43,7 @@
        <div class="dropdown">
            <button class="profile-btn" id="profileBtn"><%= initials %></button>
            <div class="dropdown-content" id="profileDropdown">
-               <a href="${pageContext.request.contextPath}/view/Profile.jsp">
+               <a href="${pageContext.request.contextPath}/profile">
                    <span class="menu-icon"><i class="fa-solid fa-user"></i></span>
                    Profile
                </a>
@@ -56,7 +56,7 @@
                    Settings
                </a>
                <div class="divider"></div>
-               <a href="${pageContext.request.contextPath}/view/logout.jsp">
+               <a href="${pageContext.request.contextPath}/logout">
                    <span class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
                    Sign out
                </a>

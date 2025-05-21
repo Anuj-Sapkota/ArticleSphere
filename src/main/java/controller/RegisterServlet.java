@@ -30,18 +30,18 @@ public class RegisterServlet extends HttpServlet
         {
             int userId = UserDAO.registerUser(user);
             user.setUserId(userId);
-            response.sendRedirect(request.getContextPath() + "/view/login.jsp?registration=success");
+            response.sendRedirect(request.getContextPath() + "/login?registration=success");
         }
         catch (SQLException e)
         {
             request.setAttribute("error", "Registration Failed: Email already registered.");
-            request.getRequestDispatcher("view/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Forward to the registration form
-        request.getRequestDispatcher("view/register.jsp").forward(request, response);
+    	request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
     }
 }

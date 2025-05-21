@@ -14,7 +14,7 @@
   <aside class="sidebar">
     <div class="logo">ArticleSphere</div>
     <nav>
-      <a href="${pageContext.request.contextPath}/view/dashboard.jsp" class="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+      <a href="${pageContext.request.contextPath}/dashboard" class="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
       <a href="${pageContext.request.contextPath}/category"><i class="fas fa-th-list"></i> Categories</a>
     </nav>
   </aside>
@@ -23,8 +23,8 @@
   <main class="main-content">
     <div class="container">
       <div class="header">
-        <h1>Admin Dashboard - Categories</h1>
-        <a href="${pageContext.request.contextPath}/view/logout.jsp" class="btn logout-btn">
+        <h1>Admin  - Categories</h1>
+        <a href="${pageContext.request.contextPath}/logout" class="btn logout-btn">
           <i class="fas fa-sign-out-alt"></i> Logout
         </a>
       </div>

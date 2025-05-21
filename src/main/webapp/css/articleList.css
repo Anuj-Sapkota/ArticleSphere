@@ -18,7 +18,14 @@ header, main {
 header h1 {
     margin-top: 2rem;
 }
-
+.category_name
+{
+	margin-left:2rem;
+}
+.recent_articles
+{
+	margin-bottom:2rem;
+}
 .container {
     display: flex;
     flex-wrap: nowrap;
@@ -96,6 +103,7 @@ main {
     display: flex;
     flex: 1;
     gap: 2rem;
+    min-height:54.5vh;
 }
 
 .main_content {

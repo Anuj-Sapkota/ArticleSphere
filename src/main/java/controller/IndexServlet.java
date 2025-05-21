@@ -24,7 +24,7 @@ public class IndexServlet extends HttpServlet {
         try {
             List categories = categoryDAO.getAllCategories();
             request.setAttribute("categories", categories);
-            request.getRequestDispatcher("/view/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);
         } catch (SQLException e) {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error: " + e.getMessage());
         }

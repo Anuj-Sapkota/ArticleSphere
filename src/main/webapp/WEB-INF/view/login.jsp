@@ -54,7 +54,7 @@
 <img src="${pageContext.request.contextPath}/assets/XIcon.png"/>
 </div>
 </div>
-<div class='register_redirect'><p>Need an account?</p><button onclick="window.location.href='${pageContext.request.contextPath}/view/register.jsp'">Click Here</button>
+<div class='register_redirect'><p>Need an account?</p><button onclick="window.location.href='${pageContext.request.contextPath}/register'">Click Here</button>
 </div>
 </footer>
 </div>

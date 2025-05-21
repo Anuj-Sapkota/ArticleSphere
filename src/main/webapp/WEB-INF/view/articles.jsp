@@ -28,14 +28,14 @@ String formattedDate = publishDate.format(formatter);
     <!-- Google Fonts for Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Link to nav.css for styling nav.jsp -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/component/nav.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nav.css">
     <!-- Link to nav.js for hamburger menu toggle in nav.jsp -->
-    <script src="${pageContext.request.contextPath}/component/nav.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/nav.js" defer></script>
     <!-- Index page CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/article.css">
 </head>	
 <body>
-    <%@ include file="../component/nav.jsp" %>
+    <%@ include file="nav.jsp" %>
     <div class="container">
         <header>
             <h1>${article.title}</h1>
@@ -66,11 +66,11 @@ String formattedDate = publishDate.format(formatter);
                         <img src="" alt="profile">
                         <div class="name_date">
                             <h1>John Doe</h1>
-                            <h1>YYYY/MM/DD</h1>
+                            <h3>2025/02/01</h3>
                         </div>
                     </div>
                     <div class="comment_content">
-                        lorem iahlksdaidjlk khakljdsasdiuh kauiydiujkasdg hakldbjasgiuh
+                       Loved the content. Very educational.
                     </div>
                 </div>
             </div>

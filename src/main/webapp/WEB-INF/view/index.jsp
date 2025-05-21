@@ -63,13 +63,13 @@
                     userObj = user;
                 }
             } catch (Exception e) {
-                response.sendRedirect(request.getContextPath() + "/view/login.jsp?error=" + e.getMessage());
+                response.sendRedirect(request.getContextPath() + "/login?error=" + e.getMessage());
                 return;
             }
         }
 
         if (userObj == null) {
-            response.sendRedirect(request.getContextPath() + "/view/login.jsp");
+            response.sendRedirect(request.getContextPath() + "/login?");
             return;
         }
     }
@@ -84,16 +84,16 @@
     <!-- Font Awesome (required for nav.jsp icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Link to nav.css for styling nav.jsp -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/component/nav.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/component/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nav.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
     <!-- Link to nav.js for hamburger menu toggle in nav.jsp -->
-    <script src="${pageContext.request.contextPath}/component/nav.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/nav.js" defer></script>
     <!-- Index page CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
 </head>
 <body>
     <!-- Include the Navigation Bar -->
-    <%@ include file="../component/nav.jsp" %>
+    <%@ include file="nav.jsp" %>
     <header>
         <div class="logo_box">
             <div class="logo_title">
@@ -130,6 +130,6 @@
             </div>
         </div>
     </main>
-    <%@ include file="../component/footer.jsp" %>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

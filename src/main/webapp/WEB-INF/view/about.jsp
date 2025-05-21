@@ -4,16 +4,16 @@
 <head>
     <%-- Font Awesome --%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/component/nav.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/component/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nav.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/about.css">
-    <script src="${pageContext.request.contextPath}/component/nav.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/nav.js" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - ArticleSphere</title>
 </head>
 <body>
-    <%@ include file="../component/nav.jsp" %>
+    <%@ include file="nav.jsp" %>
 
     <div class="content">
         <h1>ABOUT US</h1>
@@ -51,6 +51,6 @@
         </ul>
     </div>
 
-    <%@ include file="../component/footer.jsp" %>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

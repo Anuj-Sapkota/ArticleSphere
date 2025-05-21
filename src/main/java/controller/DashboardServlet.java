@@ -57,7 +57,7 @@ public class DashboardServlet extends HttpServlet {
             request.setAttribute("totalArticles", totalArticles);
             request.setAttribute("articleDataList", articleDataList);
 
-            request.getRequestDispatcher("/view/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/dashboard.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new ServletException("Database error", e);
         }

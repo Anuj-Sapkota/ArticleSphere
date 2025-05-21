@@ -35,7 +35,7 @@ public class ArticleListServlet extends HttpServlet {
                     categoryId = Integer.parseInt(categoryIdParam);
                 } catch (NumberFormatException e) {
                     LOGGER.severe("Invalid categoryId: " + categoryIdParam);
-                    response.sendRedirect(request.getContextPath() + "/view/error.jsp?message=Invalid%20category%20ID");
+                    response.sendRedirect(request.getContextPath() + "/WEB-INF/view/error.jsp?message=Invalid%20category%20ID");
                     return;
                 }
             }
@@ -43,7 +43,7 @@ public class ArticleListServlet extends HttpServlet {
             List<Article> articles = (categoryId > 0) ? articleDAO.getArticlesByCategory(categoryId) : articleDAO.getAllArticles();
             request.setAttribute("articles", articles);
             request.setAttribute("categoryName", categoryName);
-            request.getRequestDispatcher("/view/articleList.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/articleList.jsp").forward(request, response);
         } catch (SQLException e) {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error: " + e.getMessage());
         }

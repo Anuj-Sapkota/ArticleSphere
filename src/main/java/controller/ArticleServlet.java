@@ -64,7 +64,7 @@ public class ArticleServlet extends HttpServlet {
 
                 if (article != null) {
                     request.setAttribute("article", article);
-                    request.getRequestDispatcher("/view/article.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/view/article.jsp").forward(request, response);
                 } else {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND, "Article not found");
                 }
@@ -96,7 +96,7 @@ public class ArticleServlet extends HttpServlet {
     private void showNewArticleForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<model.Category> categories = categoryDAO.getAllCategories();
         request.setAttribute("categories", categories);
-        request.getRequestDispatcher("/view/Articlepublishing.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/Articlepublishing.jsp").forward(request, response);
     }
 
     private void showUpdateArticleForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
@@ -107,7 +107,7 @@ public class ArticleServlet extends HttpServlet {
             request.setAttribute("article", article);
             request.setAttribute("categories", categories);
             System.out.println("Updating article: " + article.getTitle()); // Debug
-            request.getRequestDispatcher("/view/Articlepublishing.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/Articlepublishing.jsp").forward(request, response);
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Article not found");
         }
@@ -115,7 +115,7 @@ public class ArticleServlet extends HttpServlet {
 
     private void listArticles(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         request.setAttribute("articles", articleDAO.getAllArticles());
-        request.getRequestDispatcher("/view/articleList.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/articleList.jsp").forward(request, response);
     }
 
     private void viewArticle(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
@@ -123,7 +123,7 @@ public class ArticleServlet extends HttpServlet {
         Article article = articleDAO.getArticleById(articleId);
         if (article != null) {
             request.setAttribute("article", article);
-            request.getRequestDispatcher("/view/articles.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/articles.jsp").forward(request, response);
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Article not found");
         }
@@ -188,6 +188,6 @@ public class ArticleServlet extends HttpServlet {
         articleDAO.deleteArticle(articleId);
         HttpSession session = request.getSession();
         session.setAttribute("successMessage", "Successfully deleted the article.");
-        response.sendRedirect(request.getContextPath() + "/profile.jsp");
+        response.sendRedirect(request.getContextPath() + "/profile");
     }
 }

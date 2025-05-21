@@ -8,19 +8,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${categoryName} - ArticleSphere</title>
+    <title>Articles - ArticleSphere</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/component/nav.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/component/footer.css">
-    <script src="${pageContext.request.contextPath}/component/nav.js" defer></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nav.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
+    <script src="${pageContext.request.contextPath}/js/nav.js" defer></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/articleList.css">
     <script src="https://kit.fontawesome.com/bce2e24835.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <%@ include file="../component/nav.jsp" %>
+    <%@ include file="nav.jsp" %>
     <header>
-        <h1>${categoryName}</h1>
+        <h1 class="category_name">${categoryName}</h1>
         <div class='container'>
             <c:if test="${not empty articles and not empty articles[0]}">
                 <c:set var="featured" value="${articles[0]}" />
@@ -71,7 +71,10 @@
     <main>
         <div class="main_content">
             <div class="left_main">
-                <h1>${categoryName}</h1>
+                <h1 class='recent_articles'>Recent Articles</h1>
+                 <c:if test="${empty articles or empty articles[0]}">
+                <p>No articles available.</p>
+            </c:if>
                 <c:forEach var="article" items="${articles}">
                     <div class="individual_main">
                         <div class="individual_main_content">
@@ -94,6 +97,6 @@
             </div>
         </div>
     </main>
-    <%@ include file="../component/footer.jsp" %>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

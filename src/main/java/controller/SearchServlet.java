@@ -28,7 +28,7 @@ public class SearchServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String query = request.getParameter("query");
         if (query == null || query.trim().isEmpty()) {
-            response.sendRedirect(request.getContextPath() + "/view/index.jsp");
+            response.sendRedirect(request.getContextPath() + "/home");
             return;
         }
 
@@ -41,7 +41,7 @@ public class SearchServlet extends HttpServlet {
             if (article != null) {
                 response.sendRedirect(request.getContextPath() + "/article?action=view&id=" + article.getArticleId());
             } else {
-                response.sendRedirect(request.getContextPath() + "/view/error.jsp?query=" + java.net.URLEncoder.encode(query.trim(), "UTF-8"));
+                request.getRequestDispatcher("/WEB-INF/view/error.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error: " + e.getMessage());

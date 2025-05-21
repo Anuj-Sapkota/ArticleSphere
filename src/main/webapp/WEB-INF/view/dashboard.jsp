@@ -15,7 +15,7 @@
     <div class="logo">ArticleSphere</div>
     <nav>
       <a href="${pageContext.request.contextPath}/dashboard" class="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-      <a href="${pageContext.request.contextPath}/view/categoryAdd.jsp"><i class="fas fa-th-list"></i> Categories</a>
+      <a href="${pageContext.request.contextPath}/category"><i class="fas fa-th-list"></i> Categories</a>
     </nav>
   </aside>
 

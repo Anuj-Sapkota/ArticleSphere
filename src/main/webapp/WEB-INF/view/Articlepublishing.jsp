@@ -48,7 +48,7 @@
             <div class="dropdown">
                 <button class="profile-btn" id="profileBtn"><%=initials %></button>
                 <div class="dropdown-content" id="profileDropdown">
-                    <a href="#" onclick="window.location.href='${pageContext.request.contextPath}/view/Profile.jsp'">
+                    <a href="#" onclick="window.location.href='${pageContext.request.contextPath}/profile'">
                         <span class="menu-icon"><i class="fa-solid fa-user"></i></span>Profile
                     </a>
                     <a href="#" onclick="navigateTo('stories')">
@@ -58,7 +58,7 @@
                     <a href="#" onclick="navigateTo('settings')">
                         <span class="menu-icon"><i class="fa-solid fa-gear"></i></span>Settings
                     </a>
-                    <a href="${pageContext.request.contextPath}/view/logout.jsp" onclick="navigateTo('signout')">
+                    <a href="${pageContext.request.contextPath}/logout" onclick="navigateTo('signout')">
                         <span class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></span>Sign out
                     </a>
                 </div>

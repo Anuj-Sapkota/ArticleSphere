@@ -28,7 +28,7 @@ public class CategoryServlet extends HttpServlet {
             List<Category> categories = categoryDAO.getAllCategories();
             request.setAttribute("categories", categories);
             // 2) forward to JSP (assuming dashboard.jsp is the target based on context)
-            request.getRequestDispatcher("/view/categoryAdd.jsp")
+            request.getRequestDispatcher("/WEB-INF/view/categoryAdd.jsp")
                    .forward(request, response);
         } catch (SQLException e) {
             throw new ServletException(e);

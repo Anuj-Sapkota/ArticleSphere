@@ -1,6 +1,7 @@
 package controller;
 
 import dao.UserDAO;
+
 import model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -43,7 +44,7 @@ public class LoginServlet extends HttpServlet {
             User user = userDAO.loginUser(email, password);
             if (user != null) {
                 HttpSession session = request.getSession();
-                session.setMaxInactiveInterval(60*30);
+                session.setMaxInactiveInterval(60 * 60 * 24 * 2);
                 session.setAttribute("user", user);
                 session.setAttribute("userId", user.getUserId());
                 session.setAttribute("firstname", user.getFirstName());
@@ -71,19 +72,19 @@ public class LoginServlet extends HttpServlet {
                 }
             } else {
                 request.setAttribute("error", "Invalid email or password");
-                request.getRequestDispatcher("/view/login.jsp").forward(request, response);
+                request.getRequestDispatcher("/").forward(request, response);
             }
         } catch (SQLException e) {
             request.setAttribute("error", "Login failed: " + e.getMessage());
-            request.getRequestDispatcher("/view/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/").forward(request, response);
         } catch (Exception e) {
             request.setAttribute("error", "Error creating cookie: " + e.getMessage());
-            request.getRequestDispatcher("/view/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/").forward(request, response);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/view/login.jsp");
+        response.sendRedirect(request.getContextPath() + "/");
     }
 }

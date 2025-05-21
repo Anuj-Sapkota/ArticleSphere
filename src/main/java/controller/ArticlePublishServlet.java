@@ -27,7 +27,7 @@ public class ArticlePublishServlet extends HttpServlet {
             List<Category> categories = categoryDAO.getAllCategories();
             System.out.println("Fetched categories: " + categories); // Debug output
             request.setAttribute("categories", categories);
-            request.getRequestDispatcher("/view/Articlepublishing.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/Articlepublishing.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println("Error in ArticlePublishServlet: " + e.getMessage()); // Debug error
             throw new ServletException(e);
